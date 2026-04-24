@@ -103,13 +103,19 @@ for all 279 hymns in the OpenHymnal corpus:
   - Middle-bar anticipation: when the next bar's chord differs AND there
     are ≥4 beat groups, the second half-bar walks toward the new chord's
     root via a directional arpeggio instead of repeating the block
-- L7: ✅ (core moves in)
+- L7: ✅
   - Rolled chords (`!arpeggio!`) on the low-bass opening + cadence strikes
     — C1–B1 arrivals read as a harp wash instead of a piano attack
   - Final-cadence RH octave doubling — the hymn's last bar is rendered as
     two-note chords (melody + octave above), climaxing into octaves 5–6
-  - Counter-motion under sustained soprano — middle bars where the
-    melody is one long held note get a running 1-3-5-3 LH arpeggio instead
-    of the usual two-block pattern
-  - Still to come: glissandos between phrases, bisbigliando on held tonic
-    pedals (rare enough in the corpus to defer)
+  - Counter-motion under sustained soprano — middle bars where the melody
+    is one long held note get a running 1-3-5-3 LH arpeggio instead of
+    the usual two-block pattern
+  - Bisbigliando annotation (`"_bisb."`) on the hymn's final tonic hold
+    when the last note fills ≥ 95 % of the bar — roughly 23 % of the
+    corpus (65/279), a rare gesture as intended
+  - L6 common-tone pivot for 3rd motion — when the next chord is a
+    3rd away, the anticipation holds the two common chord tones instead
+    of arpeggiating, giving the voice leading a real pivot feel
+  - Deferred: glissandos between phrases (low impact — few hymns have
+    phrase-end rest space for a gliss)

@@ -6,6 +6,33 @@ previous Claude left off. Each session appends a dated entry at the top.
 
 ---
 
+## 2026-04-23 (final) — L6 common-tone pivot + bisbigliando annotation
+
+Two last maturity moves:
+
+- **L6 common-tone pivot for 3rd motion** — previously 3rd motion
+  (I→vi, I→iii, etc.) fell through to the default directional
+  anticipation. Now `ic == 2` gets its own branch that emits the two
+  common chord tones during the anticipation:
+    - 3rd up (I→iii, ii→IV): second half plays `t`, `f` (the 3rd and
+      5th of current = root and 3rd of next)
+    - 3rd down (I→vi, ii→vii): second half plays `r`, `t` (the root and
+      3rd of current = 3rd and 5th of next)
+- **L7 bisbigliando annotation** — tight trigger: only on the hymn's
+  final cadence bar, and only when that bar's melody is a single note
+  holding ≥ 95 % of the bar (a true "amen" hold). `"_bisb."` italic
+  text annotation below the bass staff marks the shimmer; the player
+  executes the alternating-finger technique by hand. ~23 % of the corpus
+  qualifies (65/279), which feels appropriately rare.
+
+Glissandos between phrases stay deferred — in a quick survey most hymns
+don't leave rest space at phrase endings, so the feature would rarely
+fire and would add ABC complexity for little payoff.
+
+The emitter is now at full L7 for the core move set. Any further work
+would either be (a) hand-tuned exceptions for specific hymns or
+(b) genuinely new compositional features beyond the seven levels.
+
 ## 2026-04-23 (latest) — L7 final-cadence + sustained-melody counter-motion
 
 Two more L7 moves landed:

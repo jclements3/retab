@@ -240,6 +240,19 @@ def render_melody_bar(bar: dict, mult: int, octave_double: bool = False) -> str:
     return " ".join(t for t in toks if t)
 
 
+def _bar_has_long_hold(bar: dict, threshold: float) -> bool:
+    """True if any single note consumes ≥ `threshold` fraction of the bar."""
+    events = bar.get("melody") or []
+    total = sum(ev["duration"] for ev in events)
+    if total <= 0:
+        return False
+    longest = max(
+        (ev["duration"] for ev in events if ev.get("kind") == "note"),
+        default=0,
+    )
+    return longest / total >= threshold
+
+
 def is_sustained_melody(bar: dict) -> bool:
     """True if this bar is dominated by a single long note (≥ 50% of bar).
 
@@ -382,13 +395,24 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
         ic, direction = cycle_type(degree, next_degree)
         if ic == 0 or num_groups < 4:
             return _safe_chord(block, half) + " " + _safe_chord(block, half)
-        # second half: two notes summing to `half`, walking toward next chord
         a_dur = beat_16
         b_dur = half - beat_16
-        if direction == "down":
-            anticip = _safe_chord(f, a_dur) + " " + _safe_chord(t, b_dur)
+        # L6 common-tone pivot for 3rd motion: two chord-tones are shared
+        # between current and next chord. Hold them across the pivot so the
+        # voice leading is smooth.
+        #   3rd up   (I→iii, ii→IV, IV→vi): common = {t, f} — emit t, f.
+        #   3rd down (I→vi,  ii→vii, IV→ii): common = {r, t} — emit r, t.
+        if ic == 2:
+            if direction == "up":
+                anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
+            else:
+                anticip = _safe_chord(r, a_dur) + " " + _safe_chord(t, b_dur)
         else:
-            anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
+            # 2nds and 4ths: directional anticipation toward next root.
+            if direction == "down":
+                anticip = _safe_chord(f, a_dur) + " " + _safe_chord(t, b_dur)
+            else:
+                anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
         return _safe_chord(block, half) + " " + anticip
 
     # Default: one block per beat group. On opening/cadence, the first strike
@@ -469,12 +493,20 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     for i, bar in enumerate(bars):
         bar_16ths = bar_length_sixteenths(bar, mult)
         next_deg = degrees[i + 1] if i + 1 < len(degrees) else None
-        lh_bars.append(lh_pattern(
+        sustained = is_sustained_melody(bar)
+        pat = lh_pattern(
             degrees[i], effective_key, roles[i],
             bar_16ths, meter_beats, meter_unit,
             next_degree=next_deg,
-            melody_sustained=is_sustained_melody(bar),
-        ))
+            melody_sustained=sustained,
+        )
+        # L7 bisbigliando: only the hymn's FINAL cadence — and only when the
+        # final melody note is genuinely long (≥ 80% of the bar). A shimmer
+        # is a rare gesture; one per hymn is the ceiling.
+        if (i == final_bar_idx and degrees[i] == 0
+                and _bar_has_long_hold(bar, 0.95)):
+            pat = '"_bisb."' + pat
+        lh_bars.append(pat)
 
     # Content-aware line packing: estimate each bar's rendered width from its
     # token count, accumulate bars into a line until a width budget is hit.
