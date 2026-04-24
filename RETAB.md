@@ -25,9 +25,15 @@ per bar in LH. Much cleaner than L1 on harp, but under-uses the instrument.
 ## Level 3 — Trefoil block-135
 
 Replace the LH root with a diatonic **block 135** triad (root + 3rd + 5th,
-all diatonic, all stacked) drawn from the trefoil vocabulary. Struck once
-per beat. This is the baseline Retab Hymnal sound — sits comfortably in
-octave 2, rings sympathetically, doesn't fight the melody.
+all diatonic, all stacked) drawn from the trefoil vocabulary. The
+voicing is stated once; how often it's re-struck depends on the pattern.
+
+**Harp-idiomatic rule:** never re-strike the same triad on consecutive
+beats — that re-attacks the strings and kills the ring, which is why it
+reads as "stomp stomp" piano texture. Instead, either strike once and let
+the strings ring, or walk through different chord tones so each beat hits
+a fresh string. By the end of the bar all three tones are sounding
+together anyway from the prior strikes' sympathetic ring.
 
 ## Level 4 — Phrase-role articulation
 

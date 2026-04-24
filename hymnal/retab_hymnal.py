@@ -361,9 +361,20 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
     else:
         num_groups = 0
 
-    # Cadence approach (L4 + L6): arpeggio direction matches the motion to
-    # the cadence chord. Ascending = rising-4th cadences (V→I, ii→V);
-    # descending = falling-4th / plagal cadences (IV→I, I→V).
+    # -------------------------------------------------------------------
+    # Harp idiom rule: never re-strike the same triad on consecutive beats.
+    # Either (a) strike once and let ring, or (b) walk through different
+    # chord tones so each beat hits a fresh string — by the end of the bar
+    # all three strings are ringing together anyway.
+    # -------------------------------------------------------------------
+
+    # OPENING + CADENCE: single strike filling the whole bar (with the L5
+    # low-bass ditto rolled up through the triad). Let it ring.
+    if phrase_role in ("opening", "cadence"):
+        return _safe_chord(ditto_block or block, total_sixteenths)
+
+    # CADENCE APPROACH (L4 + L6): 1-3-5 arpeggio, direction matched to
+    # motion toward the cadence chord.
     if phrase_role == "cadence_approach" and num_groups >= 3:
         tail_dur = (num_groups - 2) * beat_16
         _, direction = cycle_type(degree, next_degree)
@@ -373,56 +384,64 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
                 _safe_chord(t, beat_16) + " " +
                 _safe_chord(r, tail_dur)
             )
-        # ascending default (covers 'up' and same-chord cadences)
         return (
             _safe_chord(r, beat_16) + " " +
             _safe_chord(t, beat_16) + " " +
             _safe_chord(f, tail_dur)
         )
 
-    # Middle phrase (L4 + L6 + L7).
-    if phrase_role == "middle" and num_groups >= 2 and num_groups % 2 == 0:
-        half = (num_groups // 2) * beat_16
+    # MIDDLE — all cases walk through chord tones instead of stomping.
+    if phrase_role == "middle" and num_groups >= 2:
+        ic, direction = cycle_type(degree, next_degree)
 
-        # L7: melody-sustained override — the LH runs 1-3-5-3 arpeggio so
-        # there's motion under the held soprano. Requires ≥4 beat groups.
+        # L7: sustained melody → running 1-3-5-3 arpeggio (motion under a
+        # held soprano).
         if melody_sustained and num_groups >= 4:
             arp = [r, t, f, t]
-            # pad or truncate to num_groups cells of beat_16 each
             cells = [arp[i % 4] for i in range(num_groups)]
             return " ".join(_safe_chord(c, beat_16) for c in cells)
 
-        ic, direction = cycle_type(degree, next_degree)
-        if ic == 0 or num_groups < 4:
-            return _safe_chord(block, half) + " " + _safe_chord(block, half)
-        a_dur = beat_16
-        b_dur = half - beat_16
-        # L6 common-tone pivot for 3rd motion: two chord-tones are shared
-        # between current and next chord. Hold them across the pivot so the
-        # voice leading is smooth.
-        #   3rd up   (I→iii, ii→IV, IV→vi): common = {t, f} — emit t, f.
-        #   3rd down (I→vi,  ii→vii, IV→ii): common = {r, t} — emit r, t.
-        if ic == 2:
-            if direction == "up":
-                anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
-            else:
-                anticip = _safe_chord(r, a_dur) + " " + _safe_chord(t, b_dur)
-        else:
-            # 2nds and 4ths: directional anticipation toward next root.
-            if direction == "down":
-                anticip = _safe_chord(f, a_dur) + " " + _safe_chord(t, b_dur)
-            else:
-                anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
-        return _safe_chord(block, half) + " " + anticip
+        # Static chord (no motion) — walking arpeggio across the bar.
+        # Pattern depends on bar length:
+        #   2 groups: R T     (each note rings the other half, both sound)
+        #   3 groups: R T F   (triad walk)
+        #   4+ groups: R T F T R T F T ... (cycle)
+        if ic == 0:
+            if num_groups == 2:
+                return _safe_chord(r, beat_16) + " " + _safe_chord(t, beat_16)
+            if num_groups == 3:
+                return " ".join(_safe_chord(n, beat_16) for n in (r, t, f))
+            cycle = [r, t, f, t]
+            cells = [cycle[i % 4] for i in range(num_groups)]
+            return " ".join(_safe_chord(c, beat_16) for c in cells)
 
-    # Default: one block per beat group. On opening/cadence, the first strike
-    # carries the low-bass ditto; subsequent strikes are plain triads.
-    if num_groups >= 1:
-        first = _safe_chord(ditto_block or block, beat_16)
-        rest = [_safe_chord(block, beat_16) for _ in range(num_groups - 1)]
-        return " ".join([first] + rest)
+        # Chord change coming — strike block on beat 1 (let ring half bar)
+        # then anticipate the next chord with a directional arpeggio.
+        if num_groups >= 4 and num_groups % 2 == 0:
+            half = (num_groups // 2) * beat_16
+            a_dur = beat_16
+            b_dur = half - beat_16
+            if ic == 2:
+                if direction == "up":
+                    anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
+                else:
+                    anticip = _safe_chord(r, a_dur) + " " + _safe_chord(t, b_dur)
+            else:
+                if direction == "down":
+                    anticip = _safe_chord(f, a_dur) + " " + _safe_chord(t, b_dur)
+                else:
+                    anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
+            return _safe_chord(block, half) + " " + anticip
 
-    # Fallback: irregular bar (pickup) — emit as tied block.
+        # Short bar with a chord change — walking arpeggio, ending on the
+        # note closest to the next chord's root.
+        if num_groups == 2:
+            second = f if direction == "up" else r
+            return _safe_chord(r, beat_16) + " " + _safe_chord(second, beat_16)
+        if num_groups == 3:
+            return " ".join(_safe_chord(n, beat_16) for n in (r, t, f))
+
+    # Fallback: single strike, let ring.
     return _safe_chord(ditto_block or block, total_sixteenths)
 
 

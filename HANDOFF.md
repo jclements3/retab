@@ -6,6 +6,36 @@ previous Claude left off. Each session appends a dated entry at the top.
 
 ---
 
+## 2026-04-23 (post-final) — harp-idiom rewrite of LH rhythm
+
+Critical feedback from the harpist: the LH patterns were piano-influenced
+("stomp stomp stomp stomp" — re-striking the same triad on every beat).
+On harp, re-striking a string re-attacks and kills the ring; the idiom is
+**strike once and let ring**, or **walk through different chord tones**
+so each beat hits a fresh string.
+
+Rewrote `lh_pattern` around this rule:
+
+- **Opening + cadence bars** — single strike of the whole triad
+  (with L5 low-bass ditto + L7 `!arpeggio!` roll), held for the entire
+  bar. No more quarter-note repetition.
+- **Middle (static chord)** — walking arpeggio:
+    - 2 beat groups: R, T
+    - 3 beat groups: R, T, F
+    - 4+ beat groups: R, T, F, T, R, T, F, T, … (cycle)
+- **Middle (chord change coming)** — block on beat 1 (let ring half bar),
+  then the L6 directional anticipation in the second half.
+- **Middle (short bar with chord change)** — walking arpeggio ending on
+  the tone closest to the next chord's root.
+- **Fallback** — single strike, let ring.
+
+Cadence-approach, sustained-melody counter-motion, L6 common-tone pivot,
+L7 bisbigliando, L7 octave doubling, rolled chords, numbered titles,
+flexible bar packing, Roman-numeral labels — all unchanged and still
+landing cleanly across the 279-hymn corpus.
+
+This feels like the first version I'd actually want to play from.
+
 ## 2026-04-23 (final) — L6 common-tone pivot + bisbigliando annotation
 
 Two last maturity moves:
