@@ -1,0 +1,205 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[letterpaper,margin=0.5in]{geometry}
+\usepackage{fontspec}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{amsmath}
+\setmonofont{DejaVu Sans Mono}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\renewcommand{\arraystretch}{1.0}
+\pagestyle{empty}
+\begin{document}
+\large
+\setlength{\tabcolsep}{0.6em}
+\begin{longtable}{@{\extracolsep{\fill}}l l l l l l l l l@{}}
+\texttt{#} & \texttt{pat} & \texttt{1Ionian} & \texttt{2Dorian} & \texttt{3Phrygian} & \texttt{4Lydian} & \texttt{5Mixolydian} & \texttt{6Aeolian} & \texttt{7Locrian} \
+\hline
+\endfirsthead
+\texttt{#} & \texttt{pat} & \texttt{1Ionian} & \texttt{2Dorian} & \texttt{3Phrygian} & \texttt{4Lydian} & \texttt{5Mixolydian} & \texttt{6Aeolian} & \texttt{7Locrian} \
+\hline
+\endhead
+\texttt{1} & \texttt{2} & \texttt{Cs2}$*{5}$ & \texttt{Dms2}$*{5}$ & \texttt{Ems2}$*{5}$ & \texttt{Fs2}$*{5}$ & \texttt{Gs2}$*{5}$ & \texttt{Ams2}$*{5}$ & \texttt{Bos2}$*{5}$ \
+\texttt{2} & \texttt{3} & \texttt{C}$*{5}$ & \texttt{Dm}$*{5}$ & \texttt{Em}$*{5}$ & \texttt{F}$*{5}$ & \texttt{G}$*{5}$ & \texttt{Am}$*{5}$ & \texttt{Bo}$*{5}$ \
+\texttt{3} & \texttt{4} & \texttt{Cs4}$*{5}$ & \texttt{Dms4}$*{5}$ & \texttt{Ems4}$*{5}$ & \texttt{Fs4}$*{5}$ & \texttt{Gs4}$*{5}$ & \texttt{Ams4}$*{5}$ & \texttt{Bos4}$*{5}$ \
+\texttt{4} & \texttt{5} & \texttt{C}$*{3}$ & \texttt{Dm}$*{3}$ & \texttt{Em}$*{3}$ & \texttt{F}$*{3}$ & \texttt{G}$*{3}$ & \texttt{Am}$*{3}$ & \texttt{Bo}$*{3}$ \
+\texttt{5} & \texttt{6} & \texttt{C6}$*{35}$ & \texttt{Dm6}$*{35}$ & \texttt{Em6}$*{35}$ & \texttt{F6}$*{35}$ & \texttt{G6}$*{35}$ & \texttt{Am6}$*{35}$ & \texttt{Bo6}$*{35}$ \
+\texttt{6} & \texttt{7} & \texttt{C7}$*{35}$ & \texttt{Dm7}$*{35}$ & \texttt{Em7}$*{35}$ & \texttt{F7}$*{35}$ & \texttt{G7}$*{35}$ & \texttt{Am7}$*{35}$ & \texttt{Bo7}$*{35}$ \
+\texttt{7} & \texttt{8} & \texttt{C8}$*{35}$ & \texttt{Dm8}$*{35}$ & \texttt{Em8}$*{35}$ & \texttt{F8}$*{35}$ & \texttt{G8}$*{35}$ & \texttt{Am8}$*{35}$ & \texttt{Bo8}$*{35}$ \
+\texttt{8} & \texttt{9} & \texttt{C9}$*{35}$ & \texttt{Dm9}$*{35}$ & \texttt{Em9}$*{35}$ & \texttt{F9}$*{35}$ & \texttt{G9}$*{35}$ & \texttt{Am9}$*{35}$ & \texttt{Bo9}$*{35}$ \
+\texttt{9} & \texttt{t} & \texttt{C}$\top$$*{35}$ & \texttt{Dm}$\top$$*{35}$ & \texttt{Em}$\top$$*{35}$ & \texttt{F}$\top$$*{35}$ & \texttt{G}$\top$$*{35}$ & \texttt{Am}$\top$$*{35}$ & \texttt{Bo}$\top$$*{35}$ \
+\texttt{10} & \texttt{22} & \texttt{C2}$*{5}$ & \texttt{Dm2}$*{5}$ & \texttt{Em2}$*{5}$ & \texttt{F2}$*{5}$ & \texttt{G2}$*{5}$ & \texttt{Am2}$*{5}$ & \texttt{Bo2}$*{5}$ \
+\texttt{11} & \texttt{23} & \texttt{Cs24}$*{5}$ & \texttt{Dms24}$*{5}$ & \texttt{Ems24}$*{5}$ & \texttt{Fs24}$*{5}$ & \texttt{Gs24}$*{5}$ & \texttt{Ams24}$*{5}$ & \texttt{Bos24}$*{5}$ \
+\texttt{12} & \texttt{32} & \texttt{C4}$*{5}$ & \texttt{Dm4}$*{5}$ & \texttt{Em4}$*{5}$ & \texttt{F4}$*{5}$ & \texttt{G4}$*{5}$ & \texttt{Am4}$*{5}$ & \texttt{Bo4}$*{5}$ \
+\texttt{13} & \texttt{24} & \texttt{Cs2} & \texttt{Dms2} & \texttt{Ems2} & \texttt{Fs2} & \texttt{Gs2} & \texttt{Ams2} & \texttt{Bos2} \
+\texttt{14} & \texttt{33} & \texttt{C} & \texttt{Dm} & \texttt{Em} & \texttt{F} & \texttt{G} & \texttt{Am} & \texttt{Bo} \
+\texttt{15} & \texttt{42} & \texttt{Cs4} & \texttt{Dms4} & \texttt{Ems4} & \texttt{Fs4} & \texttt{Gs4} & \texttt{Ams4} & \texttt{Bos4} \
+\texttt{16} & \texttt{25} & \texttt{Cs26}$*{5}$ & \texttt{Dms26}$*{5}$ & \texttt{Ems26}$*{5}$ & \texttt{Fs26}$*{5}$ & \texttt{Gs26}$*{5}$ & \texttt{Ams26}$*{5}$ & \texttt{Bos26}$*{5}$ \
+\texttt{17} & \texttt{34} & \texttt{C6}$*{5}$ & \texttt{Dm6}$*{5}$ & \texttt{Em6}$*{5}$ & \texttt{F6}$*{5}$ & \texttt{G6}$*{5}$ & \texttt{Am6}$*{5}$ & \texttt{Bo6}$*{5}$ \
+\texttt{18} & \texttt{43} & \texttt{Cs46}$*{5}$ & \texttt{Dms46}$*{5}$ & \texttt{Ems46}$*{5}$ & \texttt{Fs46}$*{5}$ & \texttt{Gs46}$*{5}$ & \texttt{Ams46}$*{5}$ & \texttt{Bos46}$*{5}$ \
+\texttt{19} & \texttt{52} & \texttt{C6}$*{3}$ & \texttt{Dm6}$*{3}$ & \texttt{Em6}$*{3}$ & \texttt{F6}$*{3}$ & \texttt{G6}$*{3}$ & \texttt{Am6}$*{3}$ & \texttt{Bo6}$*{3}$ \
+\texttt{20} & \texttt{26} & \texttt{Cs27}$*{5}$ & \texttt{Dms27}$*{5}$ & \texttt{Ems27}$*{5}$ & \texttt{Fs27}$*{5}$ & \texttt{Gs27}$*{5}$ & \texttt{Ams27}$*{5}$ & \texttt{Bos27}$*{5}$ \
+\texttt{21} & \texttt{35} & \texttt{C7}$*{5}$ & \texttt{Dm7}$*{5}$ & \texttt{Em7}$*{5}$ & \texttt{F7}$*{5}$ & \texttt{G7}$*{5}$ & \texttt{Am7}$*{5}$ & \texttt{Bo7}$*{5}$ \
+\texttt{22} & \texttt{44} & \texttt{Cq} & \texttt{Dmq} & \texttt{Emq} & \texttt{Fq} & \texttt{Gq} & \texttt{Amq} & \texttt{Boq} \
+\texttt{23} & \texttt{53} & \texttt{C7}$*{3}$ & \texttt{Dm7}$*{3}$ & \texttt{Em7}$*{3}$ & \texttt{F7}$*{3}$ & \texttt{G7}$*{3}$ & \texttt{Am7}$*{3}$ & \texttt{Bo7}$*{3}$ \
+\texttt{24} & \texttt{62} & \texttt{C67}$*{35}$ & \texttt{Dm67}$*{35}$ & \texttt{Em67}$*{35}$ & \texttt{F67}$*{35}$ & \texttt{G67}$*{35}$ & \texttt{Am67}$*{35}$ & \texttt{Bo67}$*{35}$ \
+\texttt{25} & \texttt{27} & \texttt{Cs28}$*{5}$ & \texttt{Dms28}$*{5}$ & \texttt{Ems28}$*{5}$ & \texttt{Fs28}$*{5}$ & \texttt{Gs28}$*{5}$ & \texttt{Ams28}$*{5}$ & \texttt{Bos28}$*{5}$ \
+\texttt{26} & \texttt{36} & \texttt{C8}$*{5}$ & \texttt{Dm8}$*{5}$ & \texttt{Em8}$*{5}$ & \texttt{F8}$*{5}$ & \texttt{G8}$*{5}$ & \texttt{Am8}$*{5}$ & \texttt{Bo8}$*{5}$ \
+\texttt{27} & \texttt{45} & \texttt{Cs48}$*{5}$ & \texttt{Dms48}$*{5}$ & \texttt{Ems48}$*{5}$ & \texttt{Fs48}$*{5}$ & \texttt{Gs48}$*{5}$ & \texttt{Ams48}$*{5}$ & \texttt{Bos48}$*{5}$ \
+\texttt{28} & \texttt{54} & \texttt{C8}$*{3}$ & \texttt{Dm8}$*{3}$ & \texttt{Em8}$*{3}$ & \texttt{F8}$*{3}$ & \texttt{G8}$*{3}$ & \texttt{Am8}$*{3}$ & \texttt{Bo8}$*{3}$ \
+\texttt{29} & \texttt{63} & \texttt{C68}$*{35}$ & \texttt{Dm68}$*{35}$ & \texttt{Em68}$*{35}$ & \texttt{F68}$*{35}$ & \texttt{G68}$*{35}$ & \texttt{Am68}$*{35}$ & \texttt{Bo68}$*{35}$ \
+\texttt{30} & \texttt{72} & \texttt{C78}$*{35}$ & \texttt{Dm78}$*{35}$ & \texttt{Em78}$*{35}$ & \texttt{F78}$*{35}$ & \texttt{G78}$*{35}$ & \texttt{Am78}$*{35}$ & \texttt{Bo78}$*{35}$ \
+\texttt{31} & \texttt{28} & \texttt{Cs29}$*{5}$ & \texttt{Dms29}$*{5}$ & \texttt{Ems29}$*{5}$ & \texttt{Fs29}$*{5}$ & \texttt{Gs29}$*{5}$ & \texttt{Ams29}$*{5}$ & \texttt{Bos29}$*{5}$ \
+\texttt{32} & \texttt{37} & \texttt{C9}$*{5}$ & \texttt{Dm9}$*{5}$ & \texttt{Em9}$*{5}$ & \texttt{F9}$*{5}$ & \texttt{G9}$*{5}$ & \texttt{Am9}$*{5}$ & \texttt{Bo9}$*{5}$ \
+\texttt{33} & \texttt{46} & \texttt{Cs49}$*{5}$ & \texttt{Dms49}$*{5}$ & \texttt{Ems49}$*{5}$ & \texttt{Fs49}$*{5}$ & \texttt{Gs49}$*{5}$ & \texttt{Ams49}$*{5}$ & \texttt{Bos49}$*{5}$ \
+\texttt{34} & \texttt{55} & \texttt{C9}$*{3}$ & \texttt{Dm9}$*{3}$ & \texttt{Em9}$*{3}$ & \texttt{F9}$*{3}$ & \texttt{G9}$*{3}$ & \texttt{Am9}$*{3}$ & \texttt{Bo9}$*{3}$ \
+\texttt{35} & \texttt{64} & \texttt{C69}$*{35}$ & \texttt{Dm69}$*{35}$ & \texttt{Em69}$*{35}$ & \texttt{F69}$*{35}$ & \texttt{G69}$*{35}$ & \texttt{Am69}$*{35}$ & \texttt{Bo69}$*{35}$ \
+\texttt{36} & \texttt{73} & \texttt{C79}$*{35}$ & \texttt{Dm79}$*{35}$ & \texttt{Em79}$*{35}$ & \texttt{F79}$*{35}$ & \texttt{G79}$*{35}$ & \texttt{Am79}$*{35}$ & \texttt{Bo79}$*{35}$ \
+\texttt{37} & \texttt{82} & \texttt{C89}$*{35}$ & \texttt{Dm89}$*{35}$ & \texttt{Em89}$*{35}$ & \texttt{F89}$*{35}$ & \texttt{G89}$*{35}$ & \texttt{Am89}$*{35}$ & \texttt{Bo89}$*{35}$ \
+\texttt{38} & \texttt{29} & \texttt{Cs2}$\top$$*{5}$ & \texttt{Dms2}$\top$$*{5}$ & \texttt{Ems2}$\top$$*{5}$ & \texttt{Fs2}$\top$$*{5}$ & \texttt{Gs2}$\top$$*{5}$ & \texttt{Ams2}$\top$$*{5}$ & \texttt{Bos2}$\top$$*{5}$ \
+\texttt{39} & \texttt{38} & \texttt{C}$\top$$*{5}$ & \texttt{Dm}$\top$$*{5}$ & \texttt{Em}$\top$$*{5}$ & \texttt{F}$\top$$*{5}$ & \texttt{G}$\top$$*{5}$ & \texttt{Am}$\top$$*{5}$ & \texttt{Bo}$\top$$*{5}$ \
+\texttt{40} & \texttt{47} & \texttt{Cs4}$\top$$*{5}$ & \texttt{Dms4}$\top$$*{5}$ & \texttt{Ems4}$\top$$*{5}$ & \texttt{Fs4}$\top$$*{5}$ & \texttt{Gs4}$\top$$*{5}$ & \texttt{Ams4}$\top$$*{5}$ & \texttt{Bos4}$\top$$*{5}$ \
+\texttt{41} & \texttt{56} & \texttt{C}$\top$$*{3}$ & \texttt{Dm}$\top$$*{3}$ & \texttt{Em}$\top$$*{3}$ & \texttt{F}$\top$$*{3}$ & \texttt{G}$\top$$*{3}$ & \texttt{Am}$\top$$*{3}$ & \texttt{Bo}$\top$$*{3}$ \
+\texttt{42} & \texttt{65} & \texttt{C6}$\top$$*{35}$ & \texttt{Dm6}$\top$$*{35}$ & \texttt{Em6}$\top$$*{35}$ & \texttt{F6}$\top$$*{35}$ & \texttt{G6}$\top$$*{35}$ & \texttt{Am6}$\top$$*{35}$ & \texttt{Bo6}$\top$$*{35}$ \
+\texttt{43} & \texttt{74} & \texttt{C7}$\top$$*{35}$ & \texttt{Dm7}$\top$$*{35}$ & \texttt{Em7}$\top$$*{35}$ & \texttt{F7}$\top$$*{35}$ & \texttt{G7}$\top$$*{35}$ & \texttt{Am7}$\top$$*{35}$ & \texttt{Bo7}$\top$$*{35}$ \
+\texttt{44} & \texttt{83} & \texttt{C8}$\top$$*{35}$ & \texttt{Dm8}$\top$$*{35}$ & \texttt{Em8}$\top$$*{35}$ & \texttt{F8}$\top$$*{35}$ & \texttt{G8}$\top$$*{35}$ & \texttt{Am8}$\top$$*{35}$ & \texttt{Bo8}$\top$$*{35}$ \
+\texttt{45} & \texttt{92} & \texttt{C9}$\top$$*{35}$ & \texttt{Dm9}$\top$$*{35}$ & \texttt{Em9}$\top$$*{35}$ & \texttt{F9}$\top$$*{35}$ & \texttt{G9}$\top$$*{35}$ & \texttt{Am9}$\top$$*{35}$ & \texttt{Bo9}$\top$$*{35}$ \
+\texttt{46} & \texttt{222} & \texttt{C24}$*{5}$ & \texttt{Dm24}$*{5}$ & \texttt{Em24}$*{5}$ & \texttt{F24}$*{5}$ & \texttt{G24}$*{5}$ & \texttt{Am24}$*{5}$ & \texttt{Bo24}$*{5}$ \
+\texttt{47} & \texttt{223} & \texttt{C2} & \texttt{Dm2} & \texttt{Em2} & \texttt{F2} & \texttt{G2} & \texttt{Am2} & \texttt{Bo2} \
+\texttt{48} & \texttt{232} & \texttt{Cs24} & \texttt{Dms24} & \texttt{Ems24} & \texttt{Fs24} & \texttt{Gs24} & \texttt{Ams24} & \texttt{Bos24} \
+\texttt{49} & \texttt{322} & \texttt{C4} & \texttt{Dm4} & \texttt{Em4} & \texttt{F4} & \texttt{G4} & \texttt{Am4} & \texttt{Bo4} \
+\texttt{50} & \texttt{224} & \texttt{C26}$*{5}$ & \texttt{Dm26}$*{5}$ & \texttt{Em26}$*{5}$ & \texttt{F26}$*{5}$ & \texttt{G26}$*{5}$ & \texttt{Am26}$*{5}$ & \texttt{Bo26}$*{5}$ \
+\texttt{51} & \texttt{233} & \texttt{Cs246}$*{5}$ & \texttt{Dms246}$*{5}$ & \texttt{Ems246}$*{5}$ & \texttt{Fs246}$*{5}$ & \texttt{Gs246}$*{5}$ & \texttt{Ams246}$*{5}$ & \texttt{Bos246}$*{5}$ \
+\texttt{52} & \texttt{242} & \texttt{Cs26} & \texttt{Dms26} & \texttt{Ems26} & \texttt{Fs26} & \texttt{Gs26} & \texttt{Ams26} & \texttt{Bos26} \
+\texttt{53} & \texttt{323} & \texttt{C46}$*{5}$ & \texttt{Dm46}$*{5}$ & \texttt{Em46}$*{5}$ & \texttt{F46}$*{5}$ & \texttt{G46}$*{5}$ & \texttt{Am46}$*{5}$ & \texttt{Bo46}$*{5}$ \
+\texttt{54} & \texttt{332} & \texttt{C6} & \texttt{Dm6} & \texttt{Em6} & \texttt{F6} & \texttt{G6} & \texttt{Am6} & \texttt{Bo6} \
+\texttt{55} & \texttt{422} & \texttt{Cs46} & \texttt{Dms46} & \texttt{Ems46} & \texttt{Fs46} & \texttt{Gs46} & \texttt{Ams46} & \texttt{Bos46} \
+\texttt{56} & \texttt{225} & \texttt{C27}$*{5}$ & \texttt{Dm27}$*{5}$ & \texttt{Em27}$*{5}$ & \texttt{F27}$*{5}$ & \texttt{G27}$*{5}$ & \texttt{Am27}$*{5}$ & \texttt{Bo27}$*{5}$ \
+\texttt{57} & \texttt{234} & \texttt{Cs247}$*{5}$ & \texttt{Dms247}$*{5}$ & \texttt{Ems247}$*{5}$ & \texttt{Fs247}$*{5}$ & \texttt{Gs247}$*{5}$ & \texttt{Ams247}$*{5}$ & \texttt{Bos247}$*{5}$ \
+\texttt{58} & \texttt{243} & \texttt{Cs27} & \texttt{Dms27} & \texttt{Ems27} & \texttt{Fs27} & \texttt{Gs27} & \texttt{Ams27} & \texttt{Bos27} \
+\texttt{59} & \texttt{252} & \texttt{Cs267}$*{5}$ & \texttt{Dms267}$*{5}$ & \texttt{Ems267}$*{5}$ & \texttt{Fs267}$*{5}$ & \texttt{Gs267}$*{5}$ & \texttt{Ams267}$*{5}$ & \texttt{Bos267}$*{5}$ \
+\texttt{60} & \texttt{324} & \texttt{C47}$*{5}$ & \texttt{Dm47}$*{5}$ & \texttt{Em47}$*{5}$ & \texttt{F47}$*{5}$ & \texttt{G47}$*{5}$ & \texttt{Am47}$*{5}$ & \texttt{Bo47}$*{5}$ \
+\texttt{61} & \texttt{333} & \texttt{C7} & \texttt{Dm7} & \texttt{Em7} & \texttt{F7} & \texttt{G7} & \texttt{Am7} & \texttt{Bh7} \
+\texttt{62} & \texttt{342} & \texttt{C67}$*{5}$ & \texttt{Dm67}$*{5}$ & \texttt{Em67}$*{5}$ & \texttt{F67}$*{5}$ & \texttt{G67}$*{5}$ & \texttt{Am67}$*{5}$ & \texttt{Bo67}$*{5}$ \
+\texttt{63} & \texttt{423} & \texttt{Cs47} & \texttt{Dms47} & \texttt{Ems47} & \texttt{Fs47} & \texttt{Gs47} & \texttt{Ams47} & \texttt{Bos47} \
+\texttt{64} & \texttt{432} & \texttt{Cs467}$*{5}$ & \texttt{Dms467}$*{5}$ & \texttt{Ems467}$*{5}$ & \texttt{Fs467}$*{5}$ & \texttt{Gs467}$*{5}$ & \texttt{Ams467}$*{5}$ & \texttt{Bos467}$*{5}$ \
+\texttt{65} & \texttt{522} & \texttt{C67}$*{3}$ & \texttt{Dm67}$*{3}$ & \texttt{Em67}$*{3}$ & \texttt{F67}$*{3}$ & \texttt{G67}$*{3}$ & \texttt{Am67}$*{3}$ & \texttt{Bo67}$*{3}$ \
+\texttt{66} & \texttt{226} & \texttt{C28}$*{5}$ & \texttt{Dm28}$*{5}$ & \texttt{Em28}$*{5}$ & \texttt{F28}$*{5}$ & \texttt{G28}$*{5}$ & \texttt{Am28}$*{5}$ & \texttt{Bo28}$*{5}$ \
+\texttt{67} & \texttt{235} & \texttt{Cs248}$*{5}$ & \texttt{Dms248}$*{5}$ & \texttt{Ems248}$*{5}$ & \texttt{Fs248}$*{5}$ & \texttt{Gs248}$*{5}$ & \texttt{Ams248}$*{5}$ & \texttt{Bos248}$*{5}$ \
+\texttt{68} & \texttt{244} & \texttt{Cs28} & \texttt{Dms28} & \texttt{Ems28} & \texttt{Fs28} & \texttt{Gs28} & \texttt{Ams28} & \texttt{Bos28} \
+\texttt{69} & \texttt{253} & \texttt{Cs268}$*{5}$ & \texttt{Dms268}$*{5}$ & \texttt{Ems268}$*{5}$ & \texttt{Fs268}$*{5}$ & \texttt{Gs268}$*{5}$ & \texttt{Ams268}$*{5}$ & \texttt{Bos268}$*{5}$ \
+\texttt{70} & \texttt{262} & \texttt{Cs278}$*{5}$ & \texttt{Dms278}$*{5}$ & \texttt{Ems278}$*{5}$ & \texttt{Fs278}$*{5}$ & \texttt{Gs278}$*{5}$ & \texttt{Ams278}$*{5}$ & \texttt{Bos278}$*{5}$ \
+\texttt{71} & \texttt{325} & \texttt{C48}$*{5}$ & \texttt{Dm48}$*{5}$ & \texttt{Em48}$*{5}$ & \texttt{F48}$*{5}$ & \texttt{G48}$*{5}$ & \texttt{Am48}$*{5}$ & \texttt{Bo48}$*{5}$ \
+\texttt{72} & \texttt{334} & \texttt{C+8} & \texttt{Dm+8} & \texttt{Em+8} & \texttt{F+8} & \texttt{G+8} & \texttt{Am+8} & \texttt{Bo+8} \
+\texttt{73} & \texttt{343} & \texttt{C68}$*{5}$ & \texttt{Dm68}$*{5}$ & \texttt{Em68}$*{5}$ & \texttt{F68}$*{5}$ & \texttt{G68}$*{5}$ & \texttt{Am68}$*{5}$ & \texttt{Bo68}$*{5}$ \
+\texttt{74} & \texttt{352} & \texttt{C78}$*{5}$ & \texttt{Dm78}$*{5}$ & \texttt{Em78}$*{5}$ & \texttt{F78}$*{5}$ & \texttt{G78}$*{5}$ & \texttt{Am78}$*{5}$ & \texttt{Bo78}$*{5}$ \
+\texttt{75} & \texttt{424} & \texttt{Cs48} & \texttt{Dms48} & \texttt{Ems48} & \texttt{Fs48} & \texttt{Gs48} & \texttt{Ams48} & \texttt{Bos48} \
+\texttt{76} & \texttt{433} & \texttt{Cs468}$*{5}$ & \texttt{Dms468}$*{5}$ & \texttt{Ems468}$*{5}$ & \texttt{Fs468}$*{5}$ & \texttt{Gs468}$*{5}$ & \texttt{Ams468}$*{5}$ & \texttt{Bos468}$*{5}$ \
+\texttt{77} & \texttt{442} & \texttt{Cs478}$*{5}$ & \texttt{Dms478}$*{5}$ & \texttt{Ems478}$*{5}$ & \texttt{Fs478}$*{5}$ & \texttt{Gs478}$*{5}$ & \texttt{Ams478}$*{5}$ & \texttt{Bos478}$*{5}$ \
+\texttt{78} & \texttt{523} & \texttt{C68}$*{3}$ & \texttt{Dm68}$*{3}$ & \texttt{Em68}$*{3}$ & \texttt{F68}$*{3}$ & \texttt{G68}$*{3}$ & \texttt{Am68}$*{3}$ & \texttt{Bo68}$*{3}$ \
+\texttt{79} & \texttt{532} & \texttt{C78}$*{3}$ & \texttt{Dm78}$*{3}$ & \texttt{Em78}$*{3}$ & \texttt{F78}$*{3}$ & \texttt{G78}$*{3}$ & \texttt{Am78}$*{3}$ & \texttt{Bo78}$*{3}$ \
+\texttt{80} & \texttt{622} & \texttt{C678}$*{35}$ & \texttt{Dm678}$*{35}$ & \texttt{Em678}$*{35}$ & \texttt{F678}$*{35}$ & \texttt{G678}$*{35}$ & \texttt{Am678}$*{35}$ & \texttt{Bo678}$*{35}$ \
+\texttt{81} & \texttt{227} & \texttt{C29}$*{5}$ & \texttt{Dm29}$*{5}$ & \texttt{Em29}$*{5}$ & \texttt{F29}$*{5}$ & \texttt{G29}$*{5}$ & \texttt{Am29}$*{5}$ & \texttt{Bo29}$*{5}$ \
+\texttt{82} & \texttt{236} & \texttt{Cs249}$*{5}$ & \texttt{Dms249}$*{5}$ & \texttt{Ems249}$*{5}$ & \texttt{Fs249}$*{5}$ & \texttt{Gs249}$*{5}$ & \texttt{Ams249}$*{5}$ & \texttt{Bos249}$*{5}$ \
+\texttt{83} & \texttt{245} & \texttt{Cs29} & \texttt{Dms29} & \texttt{Ems29} & \texttt{Fs29} & \texttt{Gs29} & \texttt{Ams29} & \texttt{Bos29} \
+\texttt{84} & \texttt{254} & \texttt{Cs269}$*{5}$ & \texttt{Dms269}$*{5}$ & \texttt{Ems269}$*{5}$ & \texttt{Fs269}$*{5}$ & \texttt{Gs269}$*{5}$ & \texttt{Ams269}$*{5}$ & \texttt{Bos269}$*{5}$ \
+\texttt{85} & \texttt{263} & \texttt{Cs279}$*{5}$ & \texttt{Dms279}$*{5}$ & \texttt{Ems279}$*{5}$ & \texttt{Fs279}$*{5}$ & \texttt{Gs279}$*{5}$ & \texttt{Ams279}$*{5}$ & \texttt{Bos279}$*{5}$ \
+\texttt{86} & \texttt{272} & \texttt{Cs289}$*{5}$ & \texttt{Dms289}$*{5}$ & \texttt{Ems289}$*{5}$ & \texttt{Fs289}$*{5}$ & \texttt{Gs289}$*{5}$ & \texttt{Ams289}$*{5}$ & \texttt{Bos289}$*{5}$ \
+\texttt{87} & \texttt{326} & \texttt{C49}$*{5}$ & \texttt{Dm49}$*{5}$ & \texttt{Em49}$*{5}$ & \texttt{F49}$*{5}$ & \texttt{G49}$*{5}$ & \texttt{Am49}$*{5}$ & \texttt{Bo49}$*{5}$ \
+\texttt{88} & \texttt{335} & \texttt{C9} & \texttt{Dm9} & \texttt{Em9} & \texttt{F9} & \texttt{G9} & \texttt{Am9} & \texttt{Bo9} \
+\texttt{89} & \texttt{344} & \texttt{C69}$*{5}$ & \texttt{Dm69}$*{5}$ & \texttt{Em69}$*{5}$ & \texttt{F69}$*{5}$ & \texttt{G69}$*{5}$ & \texttt{Am69}$*{5}$ & \texttt{Bo69}$*{5}$ \
+\texttt{90} & \texttt{353} & \texttt{C79}$*{5}$ & \texttt{Dm79}$*{5}$ & \texttt{Em79}$*{5}$ & \texttt{F79}$*{5}$ & \texttt{G79}$*{5}$ & \texttt{Am79}$*{5}$ & \texttt{Bo79}$*{5}$ \
+\texttt{91} & \texttt{362} & \texttt{C89}$*{5}$ & \texttt{Dm89}$*{5}$ & \texttt{Em89}$*{5}$ & \texttt{F89}$*{5}$ & \texttt{G89}$*{5}$ & \texttt{Am89}$*{5}$ & \texttt{Bo89}$*{5}$ \
+\texttt{92} & \texttt{425} & \texttt{Cs49} & \texttt{Dms49} & \texttt{Ems49} & \texttt{Fs49} & \texttt{Gs49} & \texttt{Ams49} & \texttt{Bos49} \
+\texttt{93} & \texttt{434} & \texttt{Cs469}$*{5}$ & \texttt{Dms469}$*{5}$ & \texttt{Ems469}$*{5}$ & \texttt{Fs469}$*{5}$ & \texttt{Gs469}$*{5}$ & \texttt{Ams469}$*{5}$ & \texttt{Bos469}$*{5}$ \
+\texttt{94} & \texttt{443} & \texttt{Cs479}$*{5}$ & \texttt{Dms479}$*{5}$ & \texttt{Ems479}$*{5}$ & \texttt{Fs479}$*{5}$ & \texttt{Gs479}$*{5}$ & \texttt{Ams479}$*{5}$ & \texttt{Bos479}$*{5}$ \
+\texttt{95} & \texttt{452} & \texttt{Cs489}$*{5}$ & \texttt{Dms489}$*{5}$ & \texttt{Ems489}$*{5}$ & \texttt{Fs489}$*{5}$ & \texttt{Gs489}$*{5}$ & \texttt{Ams489}$*{5}$ & \texttt{Bos489}$*{5}$ \
+\texttt{96} & \texttt{524} & \texttt{C69}$*{3}$ & \texttt{Dm69}$*{3}$ & \texttt{Em69}$*{3}$ & \texttt{F69}$*{3}$ & \texttt{G69}$*{3}$ & \texttt{Am69}$*{3}$ & \texttt{Bo69}$*{3}$ \
+\texttt{97} & \texttt{533} & \texttt{C79}$*{3}$ & \texttt{Dm79}$*{3}$ & \texttt{Em79}$*{3}$ & \texttt{F79}$*{3}$ & \texttt{G79}$*{3}$ & \texttt{Am79}$*{3}$ & \texttt{Bo79}$*{3}$ \
+\texttt{98} & \texttt{542} & \texttt{C89}$*{3}$ & \texttt{Dm89}$*{3}$ & \texttt{Em89}$*{3}$ & \texttt{F89}$*{3}$ & \texttt{G89}$*{3}$ & \texttt{Am89}$*{3}$ & \texttt{Bo89}$*{3}$ \
+\texttt{99} & \texttt{623} & \texttt{C679}$*{35}$ & \texttt{Dm679}$*{35}$ & \texttt{Em679}$*{35}$ & \texttt{F679}$*{35}$ & \texttt{G679}$*{35}$ & \texttt{Am679}$*{35}$ & \texttt{Bo679}$*{35}$ \
+\texttt{100} & \texttt{632} & \texttt{C689}$*{35}$ & \texttt{Dm689}$*{35}$ & \texttt{Em689}$*{35}$ & \texttt{F689}$*{35}$ & \texttt{G689}$*{35}$ & \texttt{Am689}$*{35}$ & \texttt{Bo689}$*{35}$ \
+\texttt{101} & \texttt{722} & \texttt{C789}$*{35}$ & \texttt{Dm789}$*{35}$ & \texttt{Em789}$*{35}$ & \texttt{F789}$*{35}$ & \texttt{G789}$*{35}$ & \texttt{Am789}$*{35}$ & \texttt{Bo789}$*{35}$ \
+\texttt{102} & \texttt{228} & \texttt{C2}$\top$$*{5}$ & \texttt{Dm2}$\top$$*{5}$ & \texttt{Em2}$\top$$*{5}$ & \texttt{F2}$\top$$*{5}$ & \texttt{G2}$\top$$*{5}$ & \texttt{Am2}$\top$$*{5}$ & \texttt{Bo2}$\top$$*{5}$ \
+\texttt{103} & \texttt{237} & \texttt{Cs24}$\top$$*{5}$ & \texttt{Dms24}$\top$$*{5}$ & \texttt{Ems24}$\top$$*{5}$ & \texttt{Fs24}$\top$$*{5}$ & \texttt{Gs24}$\top$$*{5}$ & \texttt{Ams24}$\top$$*{5}$ & \texttt{Bos24}$\top$$*{5}$ \
+\texttt{104} & \texttt{246} & \texttt{Cs2}$\top$ & \texttt{Dms2}$\top$ & \texttt{Ems2}$\top$ & \texttt{Fs2}$\top$ & \texttt{Gs2}$\top$ & \texttt{Ams2}$\top$ & \texttt{Bos2}$\top$ \
+\texttt{105} & \texttt{255} & \texttt{Cs26}$\top$$*{5}$ & \texttt{Dms26}$\top$$*{5}$ & \texttt{Ems26}$\top$$*{5}$ & \texttt{Fs26}$\top$$*{5}$ & \texttt{Gs26}$\top$$*{5}$ & \texttt{Ams26}$\top$$*{5}$ & \texttt{Bos26}$\top$$*{5}$ \
+\texttt{106} & \texttt{264} & \texttt{Cs27}$\top$$*{5}$ & \texttt{Dms27}$\top$$*{5}$ & \texttt{Ems27}$\top$$*{5}$ & \texttt{Fs27}$\top$$*{5}$ & \texttt{Gs27}$\top$$*{5}$ & \texttt{Ams27}$\top$$*{5}$ & \texttt{Bos27}$\top$$*{5}$ \
+\texttt{107} & \texttt{273} & \texttt{Cs28}$\top$$*{5}$ & \texttt{Dms28}$\top$$*{5}$ & \texttt{Ems28}$\top$$*{5}$ & \texttt{Fs28}$\top$$*{5}$ & \texttt{Gs28}$\top$$*{5}$ & \texttt{Ams28}$\top$$*{5}$ & \texttt{Bos28}$\top$$*{5}$ \
+\texttt{108} & \texttt{282} & \texttt{Cs29}$\top$$*{5}$ & \texttt{Dms29}$\top$$*{5}$ & \texttt{Ems29}$\top$$*{5}$ & \texttt{Fs29}$\top$$*{5}$ & \texttt{Gs29}$\top$$*{5}$ & \texttt{Ams29}$\top$$*{5}$ & \texttt{Bos29}$\top$$*{5}$ \
+\texttt{109} & \texttt{327} & \texttt{C4}$\top$$*{5}$ & \texttt{Dm4}$\top$$*{5}$ & \texttt{Em4}$\top$$*{5}$ & \texttt{F4}$\top$$*{5}$ & \texttt{G4}$\top$$*{5}$ & \texttt{Am4}$\top$$*{5}$ & \texttt{Bo4}$\top$$*{5}$ \
+\texttt{110} & \texttt{336} & \texttt{C}$\top$ & \texttt{Dm}$\top$ & \texttt{Em}$\top$ & \texttt{F}$\top$ & \texttt{G}$\top$ & \texttt{Am}$\top$ & \texttt{Bo}$\top$ \
+\texttt{111} & \texttt{345} & \texttt{C6}$\top$$*{5}$ & \texttt{Dm6}$\top$$*{5}$ & \texttt{Em6}$\top$$*{5}$ & \texttt{F6}$\top$$*{5}$ & \texttt{G6}$\top$$*{5}$ & \texttt{Am6}$\top$$*{5}$ & \texttt{Bo6}$\top$$*{5}$ \
+\texttt{112} & \texttt{354} & \texttt{C7}$\top$$*{5}$ & \texttt{Dm7}$\top$$*{5}$ & \texttt{Em7}$\top$$*{5}$ & \texttt{F7}$\top$$*{5}$ & \texttt{G7}$\top$$*{5}$ & \texttt{Am7}$\top$$*{5}$ & \texttt{Bo7}$\top$$*{5}$ \
+\texttt{113} & \texttt{363} & \texttt{C8}$\top$$*{5}$ & \texttt{Dm8}$\top$$*{5}$ & \texttt{Em8}$\top$$*{5}$ & \texttt{F8}$\top$$*{5}$ & \texttt{G8}$\top$$*{5}$ & \texttt{Am8}$\top$$*{5}$ & \texttt{Bo8}$\top$$*{5}$ \
+\texttt{114} & \texttt{372} & \texttt{C9}$\top$$*{5}$ & \texttt{Dm9}$\top$$*{5}$ & \texttt{Em9}$\top$$*{5}$ & \texttt{F9}$\top$$*{5}$ & \texttt{G9}$\top$$*{5}$ & \texttt{Am9}$\top$$*{5}$ & \texttt{Bo9}$\top$$*{5}$ \
+\texttt{115} & \texttt{426} & \texttt{Cs4}$\top$ & \texttt{Dms4}$\top$ & \texttt{Ems4}$\top$ & \texttt{Fs4}$\top$ & \texttt{Gs4}$\top$ & \texttt{Ams4}$\top$ & \texttt{Bos4}$\top$ \
+\texttt{116} & \texttt{435} & \texttt{Cs46}$\top$$*{5}$ & \texttt{Dms46}$\top$$*{5}$ & \texttt{Ems46}$\top$$*{5}$ & \texttt{Fs46}$\top$$*{5}$ & \texttt{Gs46}$\top$$*{5}$ & \texttt{Ams46}$\top$$*{5}$ & \texttt{Bos46}$\top$$*{5}$ \
+\texttt{117} & \texttt{444} & \texttt{Cq7} & \texttt{Dmq7} & \texttt{Emq7} & \texttt{Fq7} & \texttt{Gq7} & \texttt{Amq7} & \texttt{Boq7} \
+\texttt{118} & \texttt{453} & \texttt{Cs48}$\top$$*{5}$ & \texttt{Dms48}$\top$$*{5}$ & \texttt{Ems48}$\top$$*{5}$ & \texttt{Fs48}$\top$$*{5}$ & \texttt{Gs48}$\top$$*{5}$ & \texttt{Ams48}$\top$$*{5}$ & \texttt{Bos48}$\top$$*{5}$ \
+\texttt{119} & \texttt{462} & \texttt{Cs49}$\top$$*{5}$ & \texttt{Dms49}$\top$$*{5}$ & \texttt{Ems49}$\top$$*{5}$ & \texttt{Fs49}$\top$$*{5}$ & \texttt{Gs49}$\top$$*{5}$ & \texttt{Ams49}$\top$$*{5}$ & \texttt{Bos49}$\top$$*{5}$ \
+\texttt{120} & \texttt{525} & \texttt{C6}$\top$$*{3}$ & \texttt{Dm6}$\top$$*{3}$ & \texttt{Em6}$\top$$*{3}$ & \texttt{F6}$\top$$*{3}$ & \texttt{G6}$\top$$*{3}$ & \texttt{Am6}$\top$$*{3}$ & \texttt{Bo6}$\top$$*{3}$ \
+\texttt{121} & \texttt{534} & \texttt{C7}$\top$$*{3}$ & \texttt{Dm7}$\top$$*{3}$ & \texttt{Em7}$\top$$*{3}$ & \texttt{F7}$\top$$*{3}$ & \texttt{G7}$\top$$*{3}$ & \texttt{Am7}$\top$$*{3}$ & \texttt{Bo7}$\top$$*{3}$ \
+\texttt{122} & \texttt{543} & \texttt{C8}$\top$$*{3}$ & \texttt{Dm8}$\top$$*{3}$ & \texttt{Em8}$\top$$*{3}$ & \texttt{F8}$\top$$*{3}$ & \texttt{G8}$\top$$*{3}$ & \texttt{Am8}$\top$$*{3}$ & \texttt{Bo8}$\top$$*{3}$ \
+\texttt{123} & \texttt{552} & \texttt{C9}$\top$$*{3}$ & \texttt{Dm9}$\top$$*{3}$ & \texttt{Em9}$\top$$*{3}$ & \texttt{F9}$\top$$*{3}$ & \texttt{G9}$\top$$*{3}$ & \texttt{Am9}$\top$$*{3}$ & \texttt{Bo9}$\top$$*{3}$ \
+\texttt{124} & \texttt{624} & \texttt{C67}$\top$$*{35}$ & \texttt{Dm67}$\top$$*{35}$ & \texttt{Em67}$\top$$*{35}$ & \texttt{F67}$\top$$*{35}$ & \texttt{G67}$\top$$*{35}$ & \texttt{Am67}$\top$$*{35}$ & \texttt{Bo67}$\top$$*{35}$ \
+\texttt{125} & \texttt{633} & \texttt{C68}$\top$$*{35}$ & \texttt{Dm68}$\top$$*{35}$ & \texttt{Em68}$\top$$*{35}$ & \texttt{F68}$\top$$*{35}$ & \texttt{G68}$\top$$*{35}$ & \texttt{Am68}$\top$$*{35}$ & \texttt{Bo68}$\top$$*{35}$ \
+\texttt{126} & \texttt{642} & \texttt{C69}$\top$$*{35}$ & \texttt{Dm69}$\top$$*{35}$ & \texttt{Em69}$\top$$*{35}$ & \texttt{F69}$\top$$*{35}$ & \texttt{G69}$\top$$*{35}$ & \texttt{Am69}$\top$$*{35}$ & \texttt{Bo69}$\top$$*{35}$ \
+\texttt{127} & \texttt{723} & \texttt{C78}$\top$$*{35}$ & \texttt{Dm78}$\top$$*{35}$ & \texttt{Em78}$\top$$*{35}$ & \texttt{F78}$\top$$*{35}$ & \texttt{G78}$\top$$*{35}$ & \texttt{Am78}$\top$$*{35}$ & \texttt{Bo78}$\top$$*{35}$ \
+\texttt{128} & \texttt{732} & \texttt{C79}$\top$$*{35}$ & \texttt{Dm79}$\top$$*{35}$ & \texttt{Em79}$\top$$*{35}$ & \texttt{F79}$\top$$*{35}$ & \texttt{G79}$\top$$*{35}$ & \texttt{Am79}$\top$$*{35}$ & \texttt{Bo79}$\top$$*{35}$ \
+\texttt{129} & \texttt{822} & \texttt{C89}$\top$$*{35}$ & \texttt{Dm89}$\top$$*{35}$ & \texttt{Em89}$\top$$*{35}$ & \texttt{F89}$\top$$*{35}$ & \texttt{G89}$\top$$*{35}$ & \texttt{Am89}$\top$$*{35}$ & \texttt{Bo89}$\top$$*{35}$ \
+\end{longtable}
+
+\vspace{0.6em}
+\noindent\rule{\textwidth}{0.4pt}
+
+\normalsize
+\noindent\textbf{HarpChords — system & decoder}\[2pt]
+\small
+\setlength{\parskip}{2pt}
+This table enumerates every strict-diatonic chord voicing playable by a 2–4 finger hand with span $\le 10$
+strings on a lever harp, in the key of C. Shapes combine finger-to-finger intervals from
+${\mathtt{2},\mathtt{3},\mathtt{4},\mathtt{5},\mathtt{6},\mathtt{7},\mathtt{8},\mathtt{9},\top}$,
+where $\top=10$ (typed as ASCII \texttt{t}). 129 shapes total, 903 chord names — every name globally unique.
+Names are \textbf{absolute-pitch}: every name specifies exactly which strings to play; pitch classes are never collapsed across octaves.
+
+\textbf{Shape.} A \emph{shape} is a starting scale-degree plus delta diatonic intervals (inclusive: \texttt{3} $=$ up a 3rd).
+You \emph{play a shape}, two voicings \emph{share a shape}, you \emph{drill a shape} across degrees.
+Example: shape \texttt{133} $=$ C,$\to$,E,$\to$,G $=$ C major triad on strings 1, 3, 5.
+The \texttt{pat} column shows intervals only; mode columns fix the starting degree (\texttt{1Ionian} on C \ldots \texttt{7Locrian} on B).
+Span $=$ (sum of intervals) $-$ (fingers $-$ 1). Rows sorted by (finger-count, span, pattern lex).
+
+\textbf{Chord-name grammar.}
+\texttt{<root><triad-qual?><quality?><additions…>_<omissions?>^{}<inversion?>}
+\begin{tabular}{@{}l@{\ \ }l@{}}
+\texttt{root}        & Letter A–G: the shape’s lowest-sounding scale-degree. \
+\texttt{triad-qual}  & (nothing) major, \texttt{m} minor, \texttt{o} diminished — implied by mode column. \
+\texttt{quality}     & \texttt{s2} sus2, \texttt{s4} sus4, \texttt{q} quartal triad, \texttt{q7} quartal 7, \texttt{h7} half-dim 7 (Locrian), \texttt{+8} triad$+$oct-doubled root. \
+\texttt{additions}   & Non-triad pitches: \texttt{2,4,6,7} low octave; \texttt{8,9,$\top$} upper ($\mathtt{8}=1{+}$oct, $\mathtt{9}=2{+}$oct, $\top=3{+}$oct). \
+$_{\ldots}$          & Subscript: triad pitches (1,3,5) absent in the \emph{low} octave; an upper copy does not fill a low omission. \
+$^{\ldots}$          & Superscript: inversion (\texttt{1} 3rd in bass, \texttt{2} 5th in bass, \texttt{3} 7th in bass). \
+\end{tabular}
+
+\textbf{Examples, starting at middle C} (last column is strings played).
+
+\begin{minipage}[t]{0.48\textwidth}
+\begin{tabular}{@{}l@{\ }l@{\ }l@{\ }l@{}}
+\texttt{[CEG]}  & C                    & shape \texttt{133}   & 1,3,5                  \
+\texttt{[CE]}   & \texttt{C}$*{5}$     & shape \texttt{13}    & 1,3 \ (no 5)            \
+\texttt{[CG]}   & \texttt{C}$*{3}$     & shape \texttt{15}    & 1,5 \ (no 3)            \
+\texttt{[Cc]}   & \texttt{C8}$*{35}$   & shape \texttt{18}    & 1,8 \ (octave)          \
+\texttt{[Ce]}   & \texttt{C}$\top*{35}$ & shape \texttt{1}$\top$ & 1,10 \ (10th)         \
+\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\begin{tabular}{@{}l@{\ }l@{\ }l@{\ }l@{}}
+\texttt{[CEGB]} & \texttt{C7}          & shape \texttt{1333}  & 1,3,5,7               \
+\texttt{[CEGc]} & \texttt{C+8}         & shape \texttt{1334}  & 1,3,5,8               \
+\texttt{[CFB]}  & \texttt{Cq}          & shape \texttt{144}   & 1,4,7 \ (quartal)      \
+\texttt{[CFBe]} & \texttt{Cq7}         & shape \texttt{1444}  & 1,4,7,10              \
+\texttt{[CDG]}  & \texttt{Cs2}$_{5}$   & shape \texttt{12}    & 1,2 \ (sus2, no 5)      \
+\end{tabular}
+\end{minipage}
+
+\end{document}

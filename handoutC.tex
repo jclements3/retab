@@ -1,0 +1,180 @@
+% handoutC.tex — HarpChords: regular chord vocabulary × 7 modes, key of C
+% Compile with: xelatex handoutC.tex
+
+\documentclass[12pt,letterpaper]{article}
+
+\usepackage[margin=0.3in,bottom=0.35in]{geometry}
+\usepackage{fontspec}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{parskip}
+
+\setmainfont{DejaVu Serif}
+\setmonofont{DejaVu Sans Mono}
+\newfontfamily\symfont{DejaVu Sans}           % Unicode-rich font for ⚠
+\newfontfamily\chordfont{TeX Gyre Pagella}[Numbers=OldStyle]  % Music-notation serif with oldstyle figures
+
+% Chord-name macros
+\newcommand{\rn}[2]{\textbf{#1}#2}      % bold Roman numeral + quality
+\newcommand{\qs}[1]{\textit{s}#1}       % sus: italic s + N
+\newcommand{\qq}{\textit{q}}            % quartal q (italic)
+\newcommand{\qqs}{\textit{q}7}          % quartal 7: italic q + 7
+
+\setlength{\parindent}{0pt}
+\pagestyle{empty}
+
+% ─── Neutral palette ──────────────────────────────────────────────────
+\definecolor{headerbg}{HTML}{2C3E50}
+\definecolor{altrow}{HTML}{F0F4F8}
+\definecolor{desccol}{HTML}{2A3342}
+\definecolor{flavcol}{HTML}{6B7A8F}
+\definecolor{rhcol}{HTML}{1F4E79}
+\definecolor{lhcol}{HTML}{7B2B2B}
+\definecolor{warn}{HTML}{C0322A}
+
+% ─── Rainbow: 7 mode column tints (pastel) ────────────────────────────
+\definecolor{mode1}{HTML}{E8D5D5}
+\definecolor{mode2}{HTML}{E8DDD0}
+\definecolor{mode3}{HTML}{E8E5CB}
+\definecolor{mode4}{HTML}{D5E8D0}
+\definecolor{mode5}{HTML}{D0E0E8}
+\definecolor{mode6}{HTML}{D5D5E8}
+\definecolor{mode7}{HTML}{E0D5E8}
+
+% ─── Rainbow: 7 header tints (saturated) ──────────────────────────────
+\definecolor{hdr1}{HTML}{C0605A}
+\definecolor{hdr2}{HTML}{C08040}
+\definecolor{hdr3}{HTML}{B0A030}
+\definecolor{hdr4}{HTML}{50A050}
+\definecolor{hdr5}{HTML}{4080A0}
+\definecolor{hdr6}{HTML}{5050A0}
+\definecolor{hdr7}{HTML}{8050A0}
+
+\color{desccol}
+
+\begin{document}
+
+\begin{center}
+{\LARGE\bfseries\color{rhcol} HarpChords --- Regular Chord Vocabulary}\\[4pt]
+{\small\itshape\color{flavcol} Diatonic chords in Roman numerals across 7 church modes --- sorted by shape}
+\end{center}
+
+\vspace{4pt}
+
+% ─── Main chord table ────────────────────────────────────────────────
+\renewcommand{\arraystretch}{1.1}
+\setlength{\tabcolsep}{4pt}
+\footnotesize
+\begin{center}
+\begin{tabular}{@{}
+  >{\ttfamily\columncolor{altrow}}b{9mm}
+  >{\columncolor{altrow}\ttfamily}b{17mm}
+  >{\columncolor{mode1}\chordfont\centering\arraybackslash}p{18mm}
+  >{\columncolor{mode2}\chordfont\centering\arraybackslash}p{18mm}
+  >{\columncolor{mode3}\chordfont\centering\arraybackslash}p{18mm}
+  >{\columncolor{mode4}\chordfont\centering\arraybackslash}p{18mm}
+  >{\columncolor{mode5}\chordfont\centering\arraybackslash}p{22mm}
+  >{\columncolor{mode6}\chordfont\centering\arraybackslash}p{18mm}
+  >{\columncolor{mode7}\chordfont\centering\arraybackslash}p{18mm}
+@{}}
+\toprule
+\cellcolor{headerbg}\color{white}\normalfont\fontsize{14}{16}\selectfont$\looparrowright$\raisebox{0.3ex}{\footnotesize\textbf{+}} &
+\cellcolor{headerbg}\color{white}\normalfont Shape &
+\cellcolor{hdr1}\color{white}\shortstack{\bfseries 1\\\normalfont\scriptsize Ionian} &
+\cellcolor{hdr2}\color{white}\shortstack{\bfseries 2\\\normalfont\scriptsize Dorian} &
+\cellcolor{hdr3}\color{white}\shortstack{\bfseries 3\\\normalfont\scriptsize Phrygian} &
+\cellcolor{hdr4}\color{white}\shortstack{\bfseries 4\\\normalfont\scriptsize Lydian} &
+\cellcolor{hdr5}\color{white}\shortstack{\bfseries 5\\\normalfont\scriptsize Mixolydian} &
+\cellcolor{hdr6}\color{white}\shortstack{\bfseries 6\\\normalfont\scriptsize Aeolian} &
+\cellcolor{hdr7}\color{white}\shortstack{\bfseries 7\,{\symfont ⚠}\\\normalfont\scriptsize Locrian} \\
+\midrule
+24                 & 1\,2\,5                & \rn{I}{\qs{2}}        & \rn{ii}{\qs{2}}        & \rn{iii}{\qs{2}}        & \rn{IV}{\qs{2}}        & \rn{V}{\qs{2}}        & \rn{vi}{\qs{2}}        & \rn{vii}{°\qs{2}}       \\
+33                 & 1\,3\,5                & \rn{I}{}              & \rn{ii}{}              & \rn{iii}{}              & \rn{IV}{}              & \rn{V}{}              & \rn{vi}{}              & \rn{vii}{°}             \\
+42                 & 1\,4\,5                & \rn{I}{\qs{4}}        & \rn{ii}{\qs{4}}        & \rn{iii}{\qs{4}}        & \rn{IV}{\qs{4}}        & \rn{V}{\qs{4}}        & \rn{vi}{\qs{4}}        & \rn{vii}{°\qs{4}}       \\
+44                 & 1\,4\,7                & \rn{I}{\qq}           & \rn{ii}{\qq}           & \rn{iii}{\qq}           & \rn{IV}{\qq}           & \rn{V}{\qq}           & \rn{vi}{\qq}           & \rn{vii}{°\qq}          \\
+332                & 1\,3\,5\,6             & \rn{I}{6}             & \rn{ii}{6}             & \rn{iii}{6}             & \rn{IV}{6}             & \rn{V}{6}             & \rn{vi}{6}             & \rn{vii}{°6}            \\
+333                & 1\,3\,5\,7             & \rn{I}{7}             & \rn{ii}{7}             & \rn{iii}{7}             & \rn{IV}{7}             & \rn{V}{7}             & \rn{vi}{7}             & \rn{vii}{ø7}            \\
+334                & 1\,3\,5\,8             & \rn{I}{+8}            & \rn{ii}{+8}            & \rn{iii}{+8}            & \rn{IV}{+8}            & \rn{V}{+8}            & \rn{vi}{+8}            & \rn{vii}{°+8}           \\
+335                & 1\,3\,5\,9             & \rn{I}{9$_{7}$}       & \rn{ii}{9$_{7}$}       & \rn{iii}{9$_{7}$}       & \rn{IV}{9$_{7}$}       & \rn{V}{9$_{7}$}       & \rn{vi}{9$_{7}$}       & \rn{vii}{°9$_{7}$}      \\
+337                & 1\,3\,5\,11            & \rn{I}{11$_{79}$}     & \rn{ii}{11$_{79}$}     & \rn{iii}{11$_{79}$}     & \rn{IV}{11$_{79}$}     & \rn{V}{11$_{79}$}     & \rn{vi}{11$_{79}$}     & \rn{vii}{°11$_{79}$}    \\
+339                & 1\,3\,5\,13\,\dag      & \rn{I}{13$_{79b}$}    & \rn{ii}{13$_{79b}$}    & \rn{iii}{13$_{79b}$}    & \rn{IV}{13$_{79b}$}    & \rn{V}{13$_{79b}$}    & \rn{vi}{13$_{79b}$}    & \rn{vii}{°13$_{79b}$}   \\
+353                & 1\,3\,7\,9             & \rn{I}{9$_{5}$}       & \rn{ii}{9$_{5}$}       & \rn{iii}{9$_{5}$}       & \rn{IV}{9$_{5}$}       & \rn{V}{9$_{5}$}       & \rn{vi}{9$_{5}$}       & \rn{vii}{ø9$_{5}$}      \\
+355                & 1\,3\,7\,11            & \rn{I}{11$_{59}$}     & \rn{ii}{11$_{59}$}     & \rn{iii}{11$_{59}$}     & \rn{IV}{11$_{59}$}     & \rn{V}{11$_{59}$}     & \rn{vi}{11$_{59}$}     & \rn{vii}{ø11$_{59}$}    \\
+357                & 1\,3\,7\,13\,\dag      & \rn{I}{13$_{59b}$}    & \rn{ii}{13$_{59b}$}    & \rn{iii}{13$_{59b}$}    & \rn{IV}{13$_{59b}$}    & \rn{V}{13$_{59b}$}    & \rn{vi}{13$_{59b}$}    & \rn{vii}{ø13$_{59b}$}   \\
+444                & 1\,4\,7\,10            & \rn{I}{\qqs}          & \rn{ii}{\qqs}          & \rn{iii}{\qqs}          & \rn{IV}{\qqs}          & \rn{V}{\qqs}          & \rn{vi}{\qqs}          & \rn{vii}{°\qqs}         \\
+\bottomrule
+\end{tabular}
+\end{center}
+\normalsize
+
+\vspace{4pt}
+
+\textbf{\color{rhcol}Shape.} \ The ascending diatonic-interval pattern between fingers. \texttt{33} = start, up a 3rd, up a 3rd $\to$ \texttt{1\,3\,5}. Digit \texttt{3} = up a 3rd (two scale degrees); \texttt{5} = up a 5th (four scale degrees). Shape digit count = finger count $-$ 1. Hex digits \texttt{a}=10, \texttt{b}=11, \texttt{c}=12.
+
+\vspace{4pt}
+
+% ─── Legend: three side-by-side columns, one section each ─────────────
+\footnotesize
+\begin{minipage}[t]{0.32\textwidth}
+\begin{tabular}{@{} >{\ttfamily}l l @{}}
+\arrayrulecolor{headerbg}\toprule
+\multicolumn{2}{@{}l}{\bfseries\color{rhcol} Quality} \\
+\midrule
+(none), M   & major triad \\
+m, -        & minor \\
+°, dim      & diminished \\
+aug         & augmented $\ast$ \\
+△, maj7, M7 & major 7 \\
+m7, -7      & minor 7 \\
+7           & dominant 7 \\
+ø, ø7       & half-dim 7 \\
+°7, dim7    & fully-dim 7 $\ast$ \\
+m△7, -△7    & minor-major 7 $\ast$ \\
+\bottomrule\arrayrulecolor{black}
+\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\begin{tabular}{@{} >{\ttfamily}l l @{}}
+\arrayrulecolor{headerbg}\toprule
+\multicolumn{2}{@{}l}{\bfseries\color{rhcol} Sus / Quartal / Add} \\
+\midrule
+sus2, s2    & sus 2 \ (1\,2\,5) \\
+sus4, s4    & sus 4 \ (1\,4\,5) \\
+q           & quartal \ (1\,4\,7) \\
+q7          & quartal 7 \ (1\,4\,7\,10) \\
+6           & triad + 6 \\
++8          & triad + octave root \\
+9$_{7}$     & triad + 9 \\
+11$_{79}$   & triad + 11 \\
+13$_{79b}$  & triad + 13 \\
+\bottomrule\arrayrulecolor{black}
+\end{tabular}
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.32\textwidth}
+\begin{tabular}{@{} >{\ttfamily}l l @{}}
+\arrayrulecolor{headerbg}\toprule
+\multicolumn{2}{@{}l}{\bfseries\color{rhcol} Extensions \& Omissions} \\
+\midrule
+7           & diatonic 7 \ (1\,3\,5\,7) \\
+9$_{5}$     & jazz 9 \ (1\,3\,7\,9) \\
+11$_{59}$   & jazz 11 \ (1\,3\,7\,11) \\
+13$_{59b}$  & jazz 13 \ (1\,3\,7\,13) \\
+$_{3}$      & no 3 \ (power chord) \\
+$_{5}$      & no 5 \ (\texttt{C$_5$} = dyad) \\
+$_{7}$      & no 7 \ (= triad + \emph{n}) \\
+$_{79}$     & no 7, 9 \\
+$_{79b}$    & no 7, 9, 11 \ ($b{=}11$) \\
+\bottomrule\arrayrulecolor{black}
+\end{tabular}
+\end{minipage}
+\normalsize
+
+\smallskip
+
+{\color{flavcol} \textbf{Note.}\ \ The "\texttt{7}" row spans distinct qualities per mode: \texttt{I△ ii7 iii7 IV△ V7 vi7 viiø7} (dominant only on V). Same pattern for 9 / 11 / 13. \ \ Chromatic (not in this diatonic table, reference only): \texttt{aug}, \texttt{°7}, \texttt{m△7}, \texttt{$\flat$/$\sharp$}, \texttt{alt}. \ \ $\ast$ chromatic. \ \ \dag\ span 12, needs long reach or 2-hand voicing.}
+
+\end{document}

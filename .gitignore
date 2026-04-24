@@ -1,0 +1,21 @@
+# Build artifacts
+*.ps
+*.aux
+*.log
+*.mx1
+*.mx2
+*.toc
+*.out
+
+# Copyrighted / bundled reference material
+harplefthandpatterns.pdf
+fonts/
+
+# Editor backups
+*~
+.*.swp
+*.pre_*
+
+# Python
+__pycache__/
+*.pyc

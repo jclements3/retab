@@ -1,0 +1,61 @@
+# CHURCH / HYMN STYLES
+
+Subset of `GENRES.md` — only genres appropriate for playing hymns in a church
+tradition. Parent headings and indentation mirror `GENRES.md` so this file can
+be diff'd against it.
+
+-   Blues
+    -   Gospel Blues
+-   Classical
+    -   Baroque
+    -   Cantata
+    -   Chant
+    -   Choral
+    -   Early Music
+    -   Mass Requiem
+    -   Medieval
+    -   Oratorio
+    -   Organum
+    -   Renaissance
+    -   Wedding Music
+-   Country
+    -   Christian Country
+    -   Country Gospel
+-   Folk Music
+    -   American Folk Revival
+    -   British Folk Revival
+    -   Traditional Folk
+-   Hip-Hop/Rap
+    -   Christian Hip Hop
+-   Holiday
+    -   Christmas: Children's
+    -   Christmas: Classic
+    -   Christmas: Classical
+    -   Christmas: Religious
+    -   Easter
+-   Inspirational -- Christian & Gospel
+    -   CCM
+    -   Christian Metal
+    -   Christian Pop
+    -   Christian Rap
+    -   Christian Rock
+    -   Classic Christian
+    -   Contemporary Gospel
+    -   Gospel
+    -   Christian & Gospel
+    -   Praise & Worship
+    -   Southern Gospel
+    -   Traditional Gospel
+-   Pop
+    -   Christian Pop
+-   Vocal
+    -   A cappella
+    -   Cantique (sacred vocal)
+    -   Gregorian Chant
+-   World
+    -   Africa
+        -   Negro Spiritual
+    -   Celtic
+    -   Celtic Folk
+    -   Contemporary Celtic
+    -   Traditional Celtic

@@ -1,0 +1,1056 @@
+% drills.abc — LH and RH practice drills for lever harp hymn arrangement
+% Style drills (#1-6): 8-bar demonstrations through the 7 church modes via a trefoil path.
+% Pattern variations (#7+): 4-bar examples on a I-IV-V-I progression in C.
+% Compile:  abcm2ps drills.abc -O drills.ps && ps2pdf drills.ps drills.pdf
+
+%%titlefont Georgia 12 bold
+%%subtitlefont Georgia 8 italic
+%%composerfont Georgia 7 italic
+%%pagenumbers 0
+%%topmargin 0.6cm
+%%botmargin 0.6cm
+%%leftmargin 1cm
+%%rightmargin 1cm
+%%musicspace 0.15cm
+%%maxshrink 0.9
+
+% ═════════════════════════════════════════════════════════════════════
+% STYLE DRILLS — 8-bar trefoil path, LH (bass clef)
+% ═════════════════════════════════════════════════════════════════════
+
+% ═════════════════════════════════════════════════════════════════════
+%   HARP DAMPING — legend used throughout this file
+% ═════════════════════════════════════════════════════════════════════
+%   ✓       No damping required — natural decay covers the transition
+%   ⊕       Damp previous chord's strings at the bar line (palm-damp LH,
+%           finger-damp RH) before striking the next bar's chord
+%   ⊕⊕      Active damping throughout — scalar/stepwise/chromatic motion
+%           piles adjacent strings into clusters; damp each note a fraction
+%           before striking the next (or choose a different drill for
+%           legato passages)
+%
+%   Each drill title includes a bracketed tag showing its damping demand.
+%   In the staff, ⊕ symbols above the staff mark bar lines where
+%   damping is required.
+% ═════════════════════════════════════════════════════════════════════
+
+X:1
+T:1. Chorale  —  4ths CW, block 135 whole-note
+C:Fingering 1·2·3 simultaneously
+M:4/4
+L:1/4
+Q:1/4=72
+K:C clef=bass
+"C""_8" [C,E,G,]4 | "F""_8" [F,A,C]4 | "B°""_8" [B,DF]4 | "Em""_8" [E,G,B,]4 | "Am""_8" [A,CE]4 | "Dm""_8" [D,F,A,]4 | "G""_8" [G,B,D]4 | "C""_8" [C,E,G,]4 |]
+
+X:2
+T:2. Rolled  —  2nds CW, 1358 quarter arpeggio
+C:Fingering 1 2 3 4 ascending
+M:4/4
+L:1/4
+Q:1/4=100
+K:C clef=bass
+"C""_8" C, E, G, C | "Dm""_8" D, F, A, D | "Em""_8" E, G, B, E | "F""_8" F, A, C F | "G""_8" G, B, D G | "Am""_8" A, C E A | "B°""_8" B, D F B | "C""_8" C, E, G, C |]
+
+X:3
+T:3. Gospel Walk  —  4ths CCW, stride root/5th
+C:Fingering 1 (root) then 2 (5th), damp between
+M:4/4
+L:1/4
+Q:1/4=112
+K:C clef=bass
+"C""_8" C, z G, z | "G""_8" G,, z D, z | "Dm""_8" D, z A, z | "Am""_8" A,, z E, z | "Em""_8" E, z B, z | "B°""_8" B,, z F, z | "F""_8" F, z C z | "C""_8" C, z G, z |]
+
+X:4
+T:4. Celtic Drone  —  2nds CCW, 15 dyad held (6/8)
+C:Fingering 1·2 together, rings whole bar
+M:6/8
+L:1/8
+Q:3/8=60
+K:C clef=bass
+"C""_8" [C,G,]6 | "B°""_8" [B,,F,]6 | "Am""_8" [A,,E,]6 | "G""_8" [G,,D,]6 | "F""_8" [F,C]6 | "Em""_8" [E,B,]6 | "Dm""_8" [D,A,]6 | "C""_8" [C,G,]6 |]
+
+X:5
+T:5. Praise Ballad  —  3rds CW, 135 arpeggio + rest
+C:Fingering 1 2 3
+M:4/4
+L:1/4
+Q:1/4=70
+K:C clef=bass
+"C""_8" C, E, G, z | "Em""_8" E, G, B, z | "G""_8" G, B, D z | "B°""_8" B, D F z | "Dm""_8" D, F, A, z | "F""_8" F, A, C z | "Am""_8" A, C E z | "C""_8" C, E, G, z |]
+
+X:6
+T:6. Spiritual  —  3rds CCW, bass-and-chord stride
+C:Fingering 1 (bass) b1+b3, 2·3·4 (chord stab) b2+b4
+M:4/4
+L:1/4
+Q:1/4=84
+K:C clef=bass
+"C""_8" C, [E,G,C] C, [E,G,C] | "Am""_8" A, [CEA] A, [CEA] | "F""_8" F, [A,CF] F, [A,CF] | "Dm""_8" D, [F,A,D] D, [F,A,D] | "B°""_8" B, [DFB] B, [DFB] | "G""_8" G, [B,DG] G, [B,DG] | "Em""_8" E, [G,B,E] E, [G,B,E] | "C""_8" C, [E,G,C] C, [E,G,C] |]
+
+% ═════════════════════════════════════════════════════════════════════
+% LH PATTERN CATALOG — 4-bar examples on I-IV-V-I in C (bass clef)
+% ═════════════════════════════════════════════════════════════════════
+
+X:7
+T:7. Octaves alternating low/high
+M:4/4
+L:1/4
+Q:1/4=100
+K:C clef=bass
+"C" C,, C, C,, C, | "F" F,, F, F,, F, | "G" G,, G,, G,, G,, | "C" C,, C, C,, C, |]
+
+X:8
+T:8. Alberti Bass (1-5-3-5 sixteenths)
+M:4/4
+L:1/16
+Q:1/4=88
+K:C clef=bass
+"C""_8" C,G,E,G, C,G,E,G, C,G,E,G, C,G,E,G, | "F""_8" F,C A,C F,C A,C F,C A,C F,C A,C | "G""_8" G,,D,B,,D, G,,D,B,,D, G,,D,B,,D, G,,D,B,,D, | "C""_8" C,G,E,G, C,G,E,G, C,G,E,G, C,G,E,G, |]
+
+X:9
+T:9. Open Tenth arpeggio (1-5-10-5)
+M:4/4
+L:1/4
+Q:1/4=96
+K:C clef=bass
+"C""_8" C, G, E G, | "F""_8" F, C A C | "G""_8" G, D B D | "C""_8" C, G, E G, |]
+
+X:10
+T:10. Open Tenth block chord
+M:4/4
+L:1/4
+Q:1/4=72
+K:C clef=bass
+"C""_8" [C,G,E]4 | "F""_8" [F,CA]4 | "G""_8" [G,DB]4 | "C""_8" [C,G,E]4 |]
+
+X:11
+T:11. 1-5-8 Arpeggio (no 3rd, open sound)
+M:4/4
+L:1/4
+Q:1/4=100
+K:C clef=bass
+"C""_8" C, G, C G, | "F""_8" F, C F C | "G""_8" G, D G D | "C""_8" C, G, C G, |]
+
+X:12
+T:12. Stride Bass deep (octave bass + full chord)
+M:4/4
+L:1/4
+Q:1/4=108
+K:C clef=bass
+"C" C,, [C,E,G,] G,, [C,E,G,] | "F" F,, [F,A,C] C,, [F,A,C] | "G" G,, [G,,B,,D,] D,, [G,,B,,D,] | "C" C,, [C,E,G,] G,, [C,E,G,] |]
+
+X:13
+T:13. Running Eighths (1-3-5-3-1-3-5-3)
+M:4/4
+L:1/8
+Q:1/4=100
+K:C clef=bass
+"C""_8" C, E, G, E, C, E, G, E, | "F""_8" F, A, C A, F, A, C A, | "G""_8" G, B, D B, G, B, D B, | "C""_8" C, E, G, E, C, E, G, E, |]
+
+X:14
+T:14. Slap Bass (damped low note, chord stab)
+M:4/4
+L:1/4
+Q:1/4=96
+K:C clef=bass
+"C" C,,/2 z/2 [E,G,]/2 z/2 C,,/2 z/2 [E,G,]/2 z/2 | "F" F,,/2 z/2 [A,C]/2 z/2 F,,/2 z/2 [A,C]/2 z/2 | "G" G,,/2 z/2 [B,,D,]/2 z/2 G,,/2 z/2 [B,,D,]/2 z/2 | "C" C,,/2 z/2 [E,G,]/2 z/2 C,,/2 z/2 [E,G,]/2 z/2 |]
+
+X:15
+T:15. Dotted Rhythm Bass (♩. ♪ ♩ ♩)
+M:4/4
+L:1/8
+Q:1/4=92
+K:C clef=bass
+"C""_8" C,3 E, G, C G, E, | "F""_8" F,3 A, C F A, C | "G""_8" G,3 B, D G B, D | "C""_8" C,3 E, G, C G, E, |]
+
+X:16
+T:16. Half + two quarters
+M:4/4
+L:1/4
+Q:1/4=76
+K:C clef=bass
+"C""_8" C,2 E, G, | "F""_8" F,2 A, C | "G""_8" G,2 B, D | "C""_8" C,2 E, G, |]
+
+X:17
+T:17. Ascending-descending arpeggio (1-3-5-8-5-3-1)
+M:4/4
+L:1/8
+Q:1/4=110
+K:C clef=bass
+"C""_8" C, E, G, C G, E, C, z | "F""_8" F, A, C F C A, F, z | "G""_8" G, B, D G D B, G, z | "C""_8" C, E, G, C G, E, C, z |]
+
+X:18
+T:18. Continuous eighth arpeggio (1-3-5-8-1-3-5-8)
+M:4/4
+L:1/8
+Q:1/4=104
+K:C clef=bass
+"C""_8" C, E, G, C C, E, G, C | "F""_8" F, A, C F F, A, C F | "G""_8" G, B, D G G, B, D G | "C""_8" C, E, G, C C, E, G, C |]
+
+X:19
+T:19. Pedal point (drone low + chord tones above)
+M:4/4
+L:1/4
+Q:1/4=84
+K:C clef=bass
+"C" C,,/ C,,/ [E,G,] [E,G,] [E,G,] | "F" C,,/ C,,/ [F,A,C] [F,A,C] [F,A,C] | "G" C,,/ C,,/ [G,B,D] [G,B,D] [G,B,D] | "C" C,,/ C,,/ [E,G,C] [E,G,C] [E,G,C] |]
+
+X:20
+T:20. Quarter + three eighths (1 3,5,8)
+M:4/4
+L:1/8
+Q:1/4=96
+K:C clef=bass
+"C""_8" C,2 E, G, C,2 E, G, | "F""_8" F,2 A, C F,2 A, C | "G""_8" G,2 B, D G,2 B, D | "C""_8" C,2 E, G, C,2 E, G, |]
+
+% ═════════════════════════════════════════════════════════════════════
+% LH PATTERNS IN 3/4  (bass clef)
+% ═════════════════════════════════════════════════════════════════════
+
+X:21
+T:21. Waltz — oom-pah-pah (bass + chord + chord)
+M:3/4
+L:1/4
+Q:1/4=132
+K:C clef=bass
+"C" C,, [E,G,C] [E,G,C] | "F" F,, [A,CF] [A,CF] | "G" G,, [B,DG] [B,DG] | "C" C,, [E,G,C] [E,G,C] |]
+
+X:22
+T:22. Jazz Waltz — syncopated (♩ ♪♪ ♩)
+M:3/4
+L:1/8
+Q:3/8=72
+K:C clef=bass
+"C""_8" C,2 [E,G,]2 [E,G,]2 | "F""_8" F,2 [A,C]2 [A,C]2 | "G""_8" G,,2 [B,,D,]2 [B,,D,]2 | "C""_8" C,2 [E,G,]2 [E,G,]2 |]
+
+X:23
+T:23. Pretty Waltz (with 9th)
+M:3/4
+L:1/4
+Q:1/4=100
+K:C clef=bass
+"C""_8" C, G, D | "F""_8" F, C G | "G""_8" G, D A | "C""_8" C, G, D |]
+
+X:24
+T:24. Waltz arpeggio ascending (1-3-5 per bar)
+M:3/4
+L:1/4
+Q:1/4=108
+K:C clef=bass
+"C""_8" C, E, G, | "F""_8" F, A, C | "G""_8" G, B, D | "C""_8" C, E, G, |]
+
+X:25
+T:25. 3/4 Ballad — dotted half held
+M:3/4
+L:1/4
+Q:1/4=60
+K:C clef=bass
+"C""_8" [C,E,G,]3 | "F""_8" [F,A,C]3 | "G""_8" [G,B,D]3 | "C""_8" [C,E,G,]3 |]
+
+X:26
+T:26. 3/4 running eighths
+M:3/4
+L:1/8
+Q:3/8=84
+K:C clef=bass
+"C""_8" C, E, G, E, C, E, | "F""_8" F, A, C A, F, A, | "G""_8" G, B, D B, G, B, | "C""_8" C, E, G, E, C, E, |]
+
+% ═════════════════════════════════════════════════════════════════════
+% RH DRILLS  (treble clef)
+% ═════════════════════════════════════════════════════════════════════
+
+X:27
+T:27. Sustained Chord Under Melody
+C:Melody plays on top, 1358 chord held whole-note
+M:4/4
+L:1/4
+Q:1/4=72
+K:C
+"C" [CEGc]4 | "F" [FAcf]4 | "G" [GBdg]4 | "C" [CEGc]4 |]
+
+X:28
+T:28. RH Arpeggio Above Melody (ascending eighths)
+M:4/4
+L:1/8
+Q:1/4=100
+K:C
+"C" C E G c C E G c | "F" F A c f F A c f | "G" G B d g G B d g | "C" C E G c C E G c |]
+
+X:29
+T:29. Block Chord Strikes (quarter-note stabs)
+M:4/4
+L:1/4
+Q:1/4=84
+K:C
+"C" [CEGc] [CEGc] [CEGc] [CEGc] | "F" [FAcf] [FAcf] [FAcf] [FAcf] | "G" [GBdg] [GBdg] [GBdg] [GBdg] | "C" [CEGc] [CEGc] [CEGc] [CEGc] |]
+
+X:30
+T:30. Rolled Chord — classical harp
+M:4/4
+L:1/4
+Q:1/4=60
+K:C
+"C" !arpeggio![CEGc]4 | "F" !arpeggio![FAcf]4 | "G" !arpeggio![GBdg]4 | "C" !arpeggio![CEGc]4 |]
+
+X:31
+T:31. Melody + Gap Fills (alternating notes)
+M:4/4
+L:1/8
+Q:1/4=96
+K:C
+"C" C E G E C E G E | "F" F A c A F A c A | "G" G B d B G B d B | "C" C E G E C E G E |]
+
+X:32
+T:32. Shimmer — high sixteenth arpeggio
+M:4/4
+L:1/16
+Q:1/4=72
+K:C
+"C" c'ega gace c'ega gace | "F" f'acB Bcaf f'acB Bcaf | "G" g'bdc cdbg g'bdc cdbg | "C" c'ega gace c'ega gace |]
+
+X:33
+T:33. Cascade — descending arpeggio (high to low)
+M:4/4
+L:1/8
+Q:1/4=92
+K:C
+"C" c' g e c c' g e c | "F" f' c A F f' c A F | "G" g' d B G g' d B G | "C" c' g e c c' g e c |]
+
+X:34
+T:34. Octave Melody
+C:Single melody doubled at the octave
+M:4/4
+L:1/4
+Q:1/4=90
+K:C
+"C" [Cc] [Ee] [Gg] [Cc] | "F" [Ff] [Aa] [cc'] [Ff] | "G" [Gg] [Bb] [dd'] [Gg] | "C" [Cc] [Ee] [Gg] [Cc] |]
+
+X:35
+T:35. Thirds (parallel motion)
+M:4/4
+L:1/4
+Q:1/4=96
+K:C
+"C" [CE] [DF] [EG] [Fc] | "F" [FA] [Gc] [Ad] [cf] | "G" [GB] [Ac] [Bd] [cg] | "C" [CE] [DF] [EG] [Fc] |]
+
+X:36
+T:36. Staccato chord stabs (short + damped)
+M:4/4
+L:1/4
+Q:1/4=104
+K:C
+"C" [CEGc].z[CEGc].z[CEGc].z[CEGc].z | "F" [FAcf].z[FAcf].z[FAcf].z[FAcf].z | "G" [GBdg].z[GBdg].z[GBdg].z[GBdg].z | "C" [CEGc].z[CEGc].z[CEGc].z[CEGc].z |]
+
+X:37
+T:37. RH Classical Scale Run (8 eighths ascending)
+M:4/4
+L:1/8
+Q:1/4=100
+K:C
+"C" C D E F G A B c | "F" F G A B c d e f | "G" G A B c d e f g | "C" C D E F G A B c |]
+
+X:38
+T:38. Dotted Chord — half+quarter rhythm
+M:4/4
+L:1/4
+Q:1/4=72
+K:C
+"C" [CEGc]2 [CEGc] [CEGc] | "F" [FAcf]2 [FAcf] [FAcf] | "G" [GBdg]2 [GBdg] [GBdg] | "C" [CEGc]2 [CEGc] [CEGc] |]
+
+X:39
+T:39. Trill-like tremolo (fast alternating)
+M:4/4
+L:1/16
+Q:1/4=80
+K:C
+"C" cGcGcGcG cGcGcGcG cGcGcGcG cGcGcGcG | "F" cFcFcFcF cFcFcFcF cFcFcFcF cFcFcFcF | "G" dGdGdGdG dGdGdGdG dGdGdGdG dGdGdGdG | "C" cGcGcGcG cGcGcGcG cGcGcGcG cGcGcGcG |]
+
+X:40
+T:40. Gospel Run — scalar ornament between chords
+M:4/4
+L:1/8
+Q:1/4=108
+K:C
+"C" [CEGc]2 cBAG | "F" [FAcf]2 fedc | "G" [GBdg]2 gfed | "C" [CEGc]2 cBAG |]
+% drills_lh_more.abc — 20 additional LH (bass clef) practice drills (#41-60) for lever harp hymn practice. 4 bars each on I-IV-V-I (4/4) or I-V-I-V (3/4) in C. Compile: abcm2ps drills_lh_more.abc -O drills_lh_more.ps && ps2pdf drills_lh_more.ps drills_lh_more.pdf
+
+%%titlefont Georgia 12 bold
+%%subtitlefont Georgia 8 italic
+%%composerfont Georgia 7 italic
+%%pagenumbers 0
+%%topmargin 0.6cm
+%%botmargin 0.6cm
+%%leftmargin 1cm
+%%rightmargin 1cm
+%%musicspace 0.15cm
+%%maxshrink 0.9
+
+X:41
+T:41. Calypso — syncopated root + chord
+C:Bass on 1, chord on "and of 2" and 4
+M:4/4
+L:1/8
+Q:1/4=108
+K:C clef=bass
+"C""_8" C,2 z [E,G,] [E,G,]2 z [E,G,] | "F""_8" F,2 z [A,C] [A,C]2 z [A,C] | "G""_8" G,,2 z [B,,D,] [B,,D,]2 z [B,,D,] | "C""_8" C,2 z [E,G,] [E,G,]2 z [E,G,] |]
+
+X:42
+T:42. Samba — dotted-8th 16th 8th feel
+C:Fingering 1 (bass) then 2 3 (chord stabs)
+M:4/4
+L:1/16
+Q:1/4=104
+K:C clef=bass
+"C""_8" C,6 [E,G,]2 [E,G,]4 C,2 [E,G,]2 | "F""_8" F,6 [A,C]2 [A,C]4 F,2 [A,C]2 | "G""_8" G,,6 [B,,D,]2 [B,,D,]4 G,,2 [B,,D,]2 | "C""_8" C,6 [E,G,]2 [E,G,]4 C,2 [E,G,]2 |]
+
+X:43
+T:43. Bossa Nova — syncopated bass-and-chord
+C:Bass on 1 & "and of 2", chord on 3 & "and of 4"
+M:4/4
+L:1/8
+Q:1/4=96
+K:C clef=bass
+"C""_8" C,3 C, [E,G,]3 [E,G,] | "F""_8" F,3 F, [A,C]3 [A,C] | "G""_8" G,,3 G,, [B,,D,]3 [B,,D,] | "C""_8" C,3 C, [E,G,]3 [E,G,] |]
+
+X:44
+T:44. Rumba — clave-based stride
+C:Bass hits on 3-3-2 clave pattern
+M:4/4
+L:1/8
+Q:1/4=100
+K:C clef=bass
+"C""_8" C,2 z C, z2 [E,G,]2 [E,G,]2 | "F""_8" F,2 z F, z2 [A,C]2 [A,C]2 | "G""_8" G,,2 z G,, z2 [B,,D,]2 [B,,D,]2 | "C""_8" C,2 z C, z2 [E,G,]2 [E,G,]2 |]
+
+X:45
+T:45. Mambo — accented offbeat bass
+C:Bass on beats 2 & 4 "and", chords on downbeats
+M:4/4
+L:1/8
+Q:1/4=112
+K:C clef=bass
+"C""_8" [E,G,]2 C,2 [E,G,]2 C,2 | "F""_8" [A,C]2 F,2 [A,C]2 F,2 | "G""_8" [B,,D,]2 G,,2 [B,,D,]2 G,,2 | "C""_8" [E,G,]2 C,2 [E,G,]2 C,2 |]
+
+X:46
+T:46. Mexican Latin — bass 1&3, chord 2&4
+C:Classic banda/mariachi feel
+M:4/4
+L:1/4
+Q:1/4=120
+K:C clef=bass
+"C""_8" C, [E,G,C] C, [E,G,C] | "F""_8" F, [A,CF] F, [A,CF] | "G""_8" G,, [B,,D,G,] G,, [B,,D,G,] | "C""_8" C, [E,G,C] C, [E,G,C] |]
+
+X:47
+T:47. Boogie-Woogie — 8th-note walking
+C:1-3-5-6-b7-6-5-3 pattern
+M:4/4
+L:1/8
+Q:1/4=120
+K:C clef=bass
+"C""_8" C, E, G, A, _B, A, G, E, | "F""_8" F, A, C D _E D C A, | "G""_8" G,, B,, D, E, _F, E, D, B,, | "C""_8" C, E, G, A, _B, A, G, E, |]
+
+X:48
+T:48. Blues Shuffle — dotted-8th + 16th bass
+C:Swing feel, fingers 1-2-3
+M:4/4
+L:1/16
+Q:1/4=88
+K:C clef=bass
+"C""_8" C,3 E, G,3 E, C,3 E, G,3 E, | "F""_8" F,3 A, C3 A, F,3 A, C3 A, | "G""_8" G,,3 B,, D,3 B,, G,,3 B,, D,3 B,, | "C""_8" C,3 E, G,3 E, C,3 E, G,3 E, |]
+
+X:49
+T:49. Walking Bass — stepwise eighths
+C:Scale-wise motion through chord tones
+M:4/4
+L:1/8
+Q:1/4=108
+K:C clef=bass
+"C""_8" C, D, E, F, G, A, B, C | "F""_8" F, G, A, B, C D E F | "G""_8" G,, A,, B,, C, D, E, F, G, | "C""_8" C, D, E, F, G, A, B, C |]
+
+X:50
+T:50. Broken Stride — bass, chord, 3rd, chord
+C:Alternating low-high-mid-high
+M:4/4
+L:1/4
+Q:1/4=100
+K:C clef=bass
+"C""_8" C, [E,G,] E, [E,G,] | "F""_8" F, [A,C] A, [A,C] | "G""_8" G,, [B,,D,] B,, [B,,D,] | "C""_8" C, [E,G,] E, [E,G,] |]
+
+X:51
+T:51. Chromatic Passing Bass
+C:Approach each chord by semitone below
+M:4/4
+L:1/8
+Q:1/4=96
+K:C clef=bass
+"C""_8" C,2 E,2 G,2 =E,_E, | "F""_8" F,2 A,2 C2 =B,_B, | "G""_8" G,,2 B,,2 D,2 =F,_F, | "C""_8" C,2 E,2 G,2 C2 |]
+
+X:52
+T:52. Half-Rest Stride
+C:Bass + half-rest + bass + half-rest
+M:4/4
+L:1/4
+Q:1/4=72
+K:C clef=bass
+"C""_8" C, z [E,G,C] z | "F""_8" F, z [A,CF] z | "G""_8" G,, z [B,,D,G,] z | "C""_8" C, z [E,G,C] z |]
+
+X:53
+T:53. 1-3-5-10 Spread Arpeggio
+C:Widely voiced, open sound
+M:4/4
+L:1/4
+Q:1/4=92
+K:C clef=bass
+"C" C,, E, G, E | "F" F,, A, C A | "G" G,, B,, D, B | "C" C,, E, G, E |]
+
+X:54
+T:54. Triplet Arpeggio ascending
+C:Triplet eighths, 1-3-5 per triplet
+M:4/4
+L:1/8
+Q:1/4=84
+K:C clef=bass
+"C""_8" (3C,E,G, (3C,E,G, (3C,E,G, (3C,E,G, | "F""_8" (3F,A,C (3F,A,C (3F,A,C (3F,A,C | "G""_8" (3G,,B,,D, (3G,,B,,D, (3G,,B,,D, (3G,,B,,D, | "C""_8" (3C,E,G, (3C,E,G, (3C,E,G, (3C,E,G, |]
+
+X:55
+T:55. Dotted Half + Two Eighths
+C:Long held note with pickup eighths
+M:4/4
+L:1/8
+Q:1/4=76
+K:C clef=bass
+"C""_8" C,6 E, G, | "F""_8" F,6 A, C | "G""_8" G,,6 B,, D, | "C""_8" C,6 E, G, |]
+
+X:56
+T:56. Country Waltz — bass + two quarter chords
+C:Similar to oom-pah-pah but lighter
+M:3/4
+L:1/4
+Q:1/4=144
+K:C clef=bass
+"C""_8" C, [E,G,] [E,G,] | "G""_8" G,, [B,,D,] [B,,D,] | "C""_8" C, [E,G,] [E,G,] | "G""_8" G,, [B,,D,] [B,,D,] |]
+
+X:57
+T:57. Jazz Waltz Variation — off-beat comping
+C:Bass on 1, chord on "and of 2"
+M:3/4
+L:1/8
+Q:3/8=80
+K:C clef=bass
+"C""_8" C,2 z2 z [E,G,] | "G""_8" G,,2 z2 z [B,,D,] | "C""_8" C,2 z2 z [E,G,] | "G""_8" G,,2 z2 z [B,,D,] |]
+
+X:58
+T:58. Modal 3/4 — Dorian vamp open fifths
+C:Open 5th dyads, modal flavor
+M:3/4
+L:1/4
+Q:1/4=108
+K:C clef=bass
+"Dm""_8" [D,A,] [D,A,] [D,A,] | "G""_8" [G,D] [G,D] [G,D] | "Dm""_8" [D,A,] [D,A,] [D,A,] | "G""_8" [G,D] [G,D] [G,D] |]
+
+X:59
+T:59. 3/4 Walking Bass — stepwise eighths
+C:Scale through six eighth notes
+M:3/4
+L:1/8
+Q:3/8=96
+K:C clef=bass
+"C""_8" C, D, E, F, G, A, | "G""_8" G,, A,, B,, C, D, E, | "C""_8" C, D, E, F, G, A, | "G""_8" G,, A,, B,, C, D, E, |]
+
+X:60
+T:60. 3/4 Rolled Triad — rolled chord each beat
+C:Each quarter is an arpeggiated triad
+M:3/4
+L:1/4
+Q:1/4=80
+K:C clef=bass
+"C""_8" !arpeggio![C,E,G,] !arpeggio![C,E,G,] !arpeggio![C,E,G,] | "G""_8" !arpeggio![G,,B,,D,] !arpeggio![G,,B,,D,] !arpeggio![G,,B,,D,] | "C""_8" !arpeggio![C,E,G,] !arpeggio![C,E,G,] !arpeggio![C,E,G,] | "G""_8" !arpeggio![G,,B,,D,] !arpeggio![G,,B,,D,] !arpeggio![G,,B,,D,] |]
+% drills_rh_more.abc — 20 additional RH (treble clef) practice drills (#61-80) for lever-harp hymn handbook
+
+X:61
+T:61. Bebop Scale Run
+C:Fast descending eighth-note line with chromatic passing tone
+M:4/4
+L:1/8
+Q:1/4=120
+K:C
+"C" c B A G F E D C | "F" f e d c B A G F | "G" g f e d c B A G | "C" c B A G F E D C |]
+
+X:62
+T:62. Trill on Chord Tone
+C:Long trill on the 5th of the chord
+M:4/4
+L:1/4
+Q:1/4=72
+K:C
+"C" !trill!G4 | "F" !trill!c4 | "G" !trill!d4 | "C" !trill!G4 |]
+
+X:63
+T:63. Mordent Ornament
+C:Quick turn figure above each chord tone
+M:4/4
+L:1/4
+Q:1/4=84
+K:C
+"C" !mordent!C !mordent!E !mordent!G !mordent!c | "F" !mordent!F !mordent!A !mordent!c !mordent!f | "G" !mordent!G !mordent!B !mordent!d !mordent!g | "C" !mordent!C !mordent!E !mordent!G !mordent!c |]
+
+X:64
+T:64. Grace-Note Approach
+C:Grace note a step below each melody note
+M:4/4
+L:1/4
+Q:1/4=80
+K:C
+"C" {B,}C {D}E {F}G {B}c | "F" {E}F {G}A {B}c {e}f | "G" {F}G {A}B {c}d {f}g | "C" {B,}C {D}E {F}G {B}c |]
+
+X:65
+T:65. Celtic Ornament
+C:Roll/turn style, triplet feel
+M:4/4
+L:1/8
+Q:1/4=96
+K:C
+"C" (3GAG E (3cdc G | "F" (3cdc A (3fgf c | "G" (3dcd B (3gag d | "C" (3GAG E (3cdc G |]
+
+X:66
+T:66. Gospel Riff
+C:Bluesy descending run with flat 3 inflection
+M:4/4
+L:1/8
+Q:1/4=92
+K:C
+"C" c _e d c G E D C | "F" f _a g f c A G F | "G" g _b a g d B A G | "C" c _e d c G E D C |]
+
+X:67
+T:67. Glissando Simulation
+C:Fast continuous scale run, finger slide feel
+M:4/4
+L:1/8
+Q:1/4=144
+K:C
+"C" C D E F G A B c | "F" F G A B c d e f | "G" G A B c d e f g | "C" c d e f g a b c' |]
+
+X:68
+T:68. Broken Chord with 7th
+C:1-3-5-7 arpeggio in eighths
+M:4/4
+L:1/8
+Q:1/4=104
+K:C
+"C" C E G B C E G B | "F" F A c e F A c e | "G" G B d f G B d f | "C" C E G B C E G B |]
+
+X:69
+T:69. Open Tenth Chord Block
+C:1-3-10 voicing held whole-note
+M:4/4
+L:1/4
+Q:1/4=66
+K:C
+"C" [CEg]4 | "F" [FAc']4 | "G" [GBd']4 | "C" [CEg]4 |]
+
+X:70
+T:70. Tremolo on Held Note
+C:Repeated sixteenth note on the 5th
+M:4/4
+L:1/16
+Q:1/4=88
+K:C
+"C" GGGGGGGGGGGGGGGG | "F" cccccccccccccccc | "G" dddddddddddddddd | "C" GGGGGGGGGGGGGGGG |]
+
+X:71
+T:71. Counter-Melody
+C:Independent melodic line above chord tones
+M:4/4
+L:1/4
+Q:1/4=84
+K:C
+"C" e g f e | "F" a c' B a | "G" b d' c' b | "C" e g f e |]
+
+X:72
+T:72. Syncopated Chord Pumps
+C:Off-beat chord stabs (eighth rest + chord)
+M:4/4
+L:1/8
+Q:1/4=100
+K:C
+"C" z [CEGc] z [CEGc] z [CEGc] z [CEGc] | "F" z [FAcf] z [FAcf] z [FAcf] z [FAcf] | "G" z [GBdg] z [GBdg] z [GBdg] z [GBdg] | "C" z [CEGc] z [CEGc] z [CEGc] z [CEGc] |]
+
+X:73
+T:73. Dotted-Quarter + Eighth Melody
+C:Swing-feel melody over chord roots
+M:4/4
+L:1/8
+Q:1/4=96
+K:C
+"C" C3 E G3 c | "F" F3 A c3 f | "G" G3 B d3 g | "C" C3 E G3 c |]
+
+X:74
+T:74. Cascading Arpeggio 7-chord
+C:1-3-5-7-5-3-1 descending return
+M:4/4
+L:1/8
+Q:1/4=112
+K:C
+"C" C E G B G E C z | "F" F A c e c A F z | "G" G B d f d B G z | "C" C E G B G E C z |]
+
+X:75
+T:75. Pedal Point Melody
+C:Repeated high note sustained over changing chords
+M:4/4
+L:1/4
+Q:1/4=88
+K:C
+"C" g g g g | "F" g g g g | "G" g g g g | "C" g g g g |]
+
+X:76
+T:76. Classical Alberti above chord
+C:RH Alberti pattern 5-3-1-3 in eighths
+M:4/4
+L:1/8
+Q:1/4=96
+K:C
+"C" G E C E G E C E | "F" c A F A c A F A | "G" d B G B d B G B | "C" G E C E G E C E |]
+
+X:77
+T:77. Question-and-Answer Fill
+C:Eighth rest then scalar fill in eighths
+M:4/4
+L:1/8
+Q:1/4=100
+K:C
+"C" z C E G c G E C | "F" z F A c f c A F | "G" z G B d g d B G | "C" z C E G c G E C |]
+
+X:78
+T:78. Mixed Rhythm Arpeggio
+C:Quarter + two eighths + quarter + two eighths
+M:4/4
+L:1/8
+Q:1/4=92
+K:C
+"C" C2 E G G2 c E | "F" F2 A c c2 f A | "G" G2 B d d2 g B | "C" C2 E G G2 c E |]
+
+X:79
+T:79. Cluster Chord
+C:Three adjacent notes stacked, held whole-note
+M:4/4
+L:1/4
+Q:1/4=60
+K:C
+"C" [CDE]4 | "F" [FGA]4 | "G" [GAB]4 | "C" [CDE]4 |]
+
+X:80
+T:80. Final Flourish
+C:Ascending scale culminating in a held high note
+M:4/4
+L:1/8
+Q:1/4=100
+K:C
+"C" C D E F G A B c | "F" F G A B c d e f | "G" G A B c d e f g | "C" c d e f g a b c'4 |]
+% drills_grandstaff.abc — Grand-staff two-hand practice drills for hymn arrangement
+% Drills #81-90: RH (treble) and LH (bass) interlocking on grand staff
+% Compile:  abcm2ps drills_grandstaff.abc -O drills_grandstaff.ps && ps2pdf drills_grandstaff.ps drills_grandstaff.pdf
+
+%%titlefont Georgia 12 bold
+%%subtitlefont Georgia 8 italic
+%%composerfont Georgia 7 italic
+%%pagenumbers 0
+%%topmargin 0.6cm
+%%botmargin 0.6cm
+%%leftmargin 1cm
+%%rightmargin 1cm
+%%musicspace 0.15cm
+%%maxshrink 0.9
+
+% ═════════════════════════════════════════════════════════════════════
+% RH POCKET PATTERNS (#81-90)
+% Patterns to play with the RH when you're NOT carrying the melody —
+% intros, interludes, fills, atmospheric support.
+% Each drill: RH pattern + simple whole-note LH anchor on the root.
+% Trefoil = I-IV-V-I (4-bar demonstration in C).
+% ═════════════════════════════════════════════════════════════════════
+
+X:81
+T:81. RH Pocket: Sustained Bed
+T:Use when LH is busy — ring a chord over the groove
+C:RH 1358 whole-note chord; LH simple root
+M:4/4
+L:1/4
+Q:1/4=80
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']4 | "F" [fac'f']4 | "G" [gbd'g']4 | "C" [cegc']4 |]
+[V:V2] C,4 | F,4 | G,4 | C,4 |]
+
+X:82
+T:82. RH Pocket: Pulse Stabs
+T:Use when matching LH groove — rhythmic chord hits
+C:RH chord quarter-note stabs; LH whole-note anchor
+M:4/4
+L:1/4
+Q:1/4=96
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc'] [cegc'] [cegc'] [cegc'] | "F" [fac'f'] [fac'f'] [fac'f'] [fac'f'] | "G" [gbd'g'] [gbd'g'] [gbd'g'] [gbd'g'] | "C" [cegc'] [cegc'] [cegc'] [cegc'] |]
+[V:V2] C,4 | F,4 | G,4 | C,4 |]
+
+X:83
+T:83. RH Pocket: Upward Arpeggio
+T:Use to fill gaps between LH beats — flowing upward
+C:RH ascending 1358 eighths; LH root anchor
+M:4/4
+L:1/8
+Q:1/4=100
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c e g c' c e g c' | "F" f a c' f' f a c' f' | "G" g b d' g' g b d' g' | "C" c e g c' c e g c' |]
+[V:V2] C,8 | F,8 | G,8 | C,8 |]
+
+X:84
+T:84. RH Pocket: Tremolo Shimmer
+T:Use for atmosphere — continuous high-register alternation
+C:RH two chord tones alternating as sixteenths; LH anchor
+M:4/4
+L:1/16
+Q:1/4=76
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c'gc'g c'gc'g c'gc'g c'gc'g | "F" c'fc'f c'fc'f c'fc'f c'fc'f | "G" d'gd'g d'gd'g d'gd'g d'gd'g | "C" c'gc'g c'gc'g c'gc'g c'gc'g |]
+[V:V2] C,16 | F,16 | G,16 | C,16 |]
+
+X:85
+T:85. RH Pocket: Counter-Line
+T:Use to weave a moving inner voice through the LH harmony
+C:RH stepwise quarter-note line over LH open-fifth drone
+M:4/4
+L:1/4
+Q:1/4=88
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c d e f | "F" f g a c' | "G" g a b d' | "C" c' b g c |]
+[V:V2] [C,G,]4 | [F,C]4 | [G,D]4 | [C,G,]4 |]
+
+X:86
+T:86. RH Pocket: Rolled Flourish
+T:Use for emphasis or at cadences — classical harp roll
+C:RH rolled 1358 whole-note chord; LH root
+M:4/4
+L:1/4
+Q:1/4=60
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" !arpeggio![cegc']4 | "F" !arpeggio![fac'f']4 | "G" !arpeggio![gbd'g']4 | "C" !arpeggio![cegc']4 |]
+[V:V2] C,4 | F,4 | G,4 | C,4 |]
+
+X:87
+T:87. RH Pocket: Cascading Descent
+T:Use at phrase endings — high-to-low flow resolving down
+C:RH descending 8531 eighths + rest half; LH anchor
+M:4/4
+L:1/8
+Q:1/4=92
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c' g e c z4 | "F" f' c' a f z4 | "G" g' d' b g z4 | "C" c' g e c z4 |]
+[V:V2] C,8 | F,8 | G,8 | C,8 |]
+
+X:88
+T:88. RH Pocket: Tied-and-Restruck
+T:Use when melody holds — re-articulate chord to keep pulse
+C:RH chord half-note + two quarters; LH anchor
+M:4/4
+L:1/4
+Q:1/4=84
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']2 [cegc'] [cegc'] | "F" [fac'f']2 [fac'f'] [fac'f'] | "G" [gbd'g']2 [gbd'g'] [gbd'g'] | "C" [cegc']2 [cegc'] [cegc'] |]
+[V:V2] C,4 | F,4 | G,4 | C,4 |]
+
+X:89
+T:89. RH Pocket: Scalar Run
+T:Use for transitions between chord changes — fast scale run
+C:RH ascending eighth-note scale; LH whole-note anchor
+M:4/4
+L:1/8
+Q:1/4=104
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c d e f g a b c' | "F" f g a b c' d' e' f' | "G" g a b c' d' e' f' g' | "C" c' b a g f e d c |]
+[V:V2] C,8 | F,8 | G,8 | C,8 |]
+
+X:90
+T:90. RH Pocket: Alberti Broken
+T:Use for continuous flowing fill — Alberti 1-5-3-5 pattern
+C:RH eighth-note broken chord pattern; LH anchor
+M:4/4
+L:1/8
+Q:1/4=92
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c g e g c g e g | "F" f c' a c' f c' a c' | "G" g d' b d' g d' b d' | "C" c g e g c g e g |]
+[V:V2] C,8 | F,8 | G,8 | C,8 |]
+
+% ═════════════════════════════════════════════════════════════════════
+% STYLE DRILLS — GRAND STAFF (#91-96)
+% LH + RH patterns paired for specific hymn-playing styles,
+% 8 bars through the trefoil path that fits each style.
+% ═════════════════════════════════════════════════════════════════════
+
+X:91
+T:91. Classic Hymn (4ths CW) — block chord both hands
+T:Homophonic hymn texture, full 7-mode cycle
+C:RH 1358 + LH 135, both whole-note struck together
+M:4/4
+L:1/4
+Q:1/4=72
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']4 | "F" [fac'f']4 | "B°" [Bdfb]4 | "Em" [egbe']4 | "Am" [ac'e'a']4 | "Dm" [dfad']4 | "G" [gbd'g']4 | "C" [cegc']4 |]
+[V:V2] "_8"[C,E,G,]4 | "_8"[F,A,C]4 | "_8"[B,DF]4 | "_8"[E,G,B,]4 | "_8"[A,CE]4 | "_8"[D,F,A,]4 | "_8"[G,B,D]4 | "_8"[C,E,G,]4 |]
+
+X:92
+T:92. Rolled Cascade (2nds CW) — arpeggio both hands
+T:RH eighth arpeggio flows over LH quarter arpeggio — full 7-mode cycle
+C:Contrapuntal upper/lower voices
+M:4/4
+L:1/8
+Q:1/4=96
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c e g c' c e g c' | "Dm" d f a d' d f a d' | "Em" e g b e' e g b e' | "F" f a c' f' f a c' f' | "G" g b d' g' g b d' g' | "Am" a c' e' a' a c' e' a' | "B°" B d f b B d f b | "C" c e g c' c e g c' |]
+[V:V2] "_8"C,2 E,2 G,2 C2 | "_8"D,2 F,2 A,2 D2 | "_8"E,2 G,2 B,2 E2 | "_8"F,2 A,2 C2 F2 | "_8"G,2 B,2 D2 G2 | "_8"A,2 C2 E2 A2 | "_8"B,2 D2 F2 B2 | "_8"C,2 E,2 G,2 C2 |]
+
+X:93
+T:93. Gospel Groove (4ths CCW) — stride LH + chord stabs RH
+T:LH walks root/5th, RH stabs on off-beats — upbeat gospel feel
+C:Full 7-mode cycle
+M:4/4
+L:1/8
+Q:1/4=112
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" z z z [cegc'] z z z [cegc'] | "G" z z z [gbd'g'] z z z [gbd'g'] | "Dm" z z z [dfad'] z z z [dfad'] | "Am" z z z [ac'e'a'] z z z [ac'e'a'] | "Em" z z z [egbe'] z z z [egbe'] | "B°" z z z [Bdfb] z z z [Bdfb] | "F" z z z [fac'f'] z z z [fac'f'] | "C" z z z [cegc'] z z z [cegc'] |]
+[V:V2] "_8"C,2 z2 G,2 z2 | "_8"G,2 z2 D,2 z2 | "_8"D,2 z2 A,2 z2 | "_8"A,2 z2 E,2 z2 | "_8"E,2 z2 B,2 z2 | "_8"B,,2 z2 F,2 z2 | "_8"F,2 z2 C2 z2 | "_8"C,2 z2 G,2 z2 |]
+
+X:94
+T:94. Celtic Lilt (2nds CCW, 6/8) — drone LH + arpeggio RH
+T:Classic folk texture — drone held, RH arpeggio dances
+C:Full 7-mode cycle through descending 2nds
+M:6/8
+L:1/8
+Q:3/8=66
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" c e g c' g e | "B°" B d f b f d | "Am" a c' e' a' e' c' | "G" g b d' g' d' b | "F" f a c' f' c' a | "Em" e g b e' b g | "Dm" d f a d' a f | "C" c e g c' g e |]
+[V:V2] [C,G,]6 | [B,,F,]6 | [A,,E,]6 | [G,,D,]6 | [F,C]6 | [E,B,]6 | [D,A,]6 | [C,G,]6 |]
+
+X:95
+T:95. Praise Ballad Two-Hand (3rds CW) — rolled LH + sustained RH
+T:Emotional hymn ballad — RH holds, LH arpeggiates
+C:Full 7-mode cycle
+M:4/4
+L:1/4
+Q:1/4=68
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']4 | "Em" [egbe']4 | "G" [gbd'g']4 | "B°" [Bdfb]4 | "Dm" [dfad']4 | "F" [fac'f']4 | "Am" [ac'e'a']4 | "C" [cegc']4 |]
+[V:V2] "_8"C, E, G, z | "_8"E, G, B, z | "_8"G, B, D z | "_8"B, D F z | "_8"D, F, A, z | "_8"F, A, C z | "_8"A, C E z | "_8"C, E, G, z |]
+
+X:96
+T:96. Spiritual Antiphon (3rds CCW) — bass-and-chord LH + call-response RH
+T:Antiphonal texture — LH drives, RH trades with rhythm on off-beats
+C:Full 7-mode cycle
+M:4/4
+L:1/4
+Q:1/4=80
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" z2 e g | "Am" z2 c' e' | "F" z2 a c' | "Dm" z2 f a | "B°" z2 d' f' | "G" z2 b d' | "Em" z2 g b | "C" z2 e g |]
+[V:V2] "_8"C, [E,G,C] C, [E,G,C] | "_8"A, [CEA] A, [CEA] | "_8"F, [A,CF] F, [A,CF] | "_8"D, [F,A,D] D, [F,A,D] | "_8"B, [DFB] B, [DFB] | "_8"G, [B,DG] G, [B,DG] | "_8"E, [G,B,E] E, [G,B,E] | "_8"C, [E,G,C] C, [E,G,C] |]
+
+X:97
+T:97. Open-Tenth Hymn (4ths CW) — wide LH spread + block RH
+T:LH 1-5-10 arpeggio under RH 1358 block — expansive voicing
+C:Full 7-mode cycle
+M:4/4
+L:1/4
+Q:1/4=76
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']4 | "F" [fac'f']4 | "B°" [Bdfb]4 | "Em" [egbe']4 | "Am" [ac'e'a']4 | "Dm" [dfad']4 | "G" [gbd'g']4 | "C" [cegc']4 |]
+[V:V2] "_8"C, G, E z | "_8"F, C A z | "_8"B, F d z | "_8"E, B, G z | "_8"A, E c z | "_8"D, A, F z | "_8"G, D B z | "_8"C, G, E z |]
+
+X:98
+T:98. Alberti Romance (2nds CW) — classical LH + sustained RH
+T:Fast 1-5-3-5 Alberti bass under held chord — Romantic piano-style
+C:Full 7-mode cycle
+M:4/4
+L:1/16
+Q:1/4=96
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']16 | "Dm" [dfad']16 | "Em" [egbe']16 | "F" [fac'f']16 | "G" [gbd'g']16 | "Am" [ac'e'a']16 | "B°" [Bdfb]16 | "C" [cegc']16 |]
+[V:V2] "_8"C,G,E,G, C,G,E,G, C,G,E,G, C,G,E,G, | "_8"D,A,F,A, D,A,F,A, D,A,F,A, D,A,F,A, | "_8"E,B,G,B, E,B,G,B, E,B,G,B, E,B,G,B, | "_8"F,CA,C F,CA,C F,CA,C F,CA,C | "_8"G,DB,D G,DB,D G,DB,D G,DB,D | "_8"A,ECE A,ECE A,ECE A,ECE | "_8"B,FDF B,FDF B,FDF B,FDF | "_8"C,G,E,G, C,G,E,G, C,G,E,G, C,G,E,G, |]
+
+X:99
+T:99. Waltz Two-Hand (4ths CW, 3/4) — oom-pah-pah + chord echo
+T:LH bass+chord+chord waltz under RH half-chord + quarter echo
+C:Full 7-mode cycle in 3/4
+M:3/4
+L:1/4
+Q:1/4=120
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" [cegc']2 [cegc'] | "F" [fac'f']2 [fac'f'] | "B°" [Bdfb]2 [Bdfb] | "Em" [egbe']2 [egbe'] | "Am" [ac'e'a']2 [ac'e'a'] | "Dm" [dfad']2 [dfad'] | "G" [gbd'g']2 [gbd'g'] | "C" [cegc']2 [cegc'] |]
+[V:V2] "_8"C, [E,G,C] [E,G,C] | "_8"F, [A,CF] [A,CF] | "_8"B, [DFB] [DFB] | "_8"E, [G,B,E] [G,B,E] | "_8"A, [CEA] [CEA] | "_8"D, [F,A,D] [F,A,D] | "_8"G, [B,DG] [B,DG] | "_8"C, [E,G,C] [E,G,C] |]
+
+X:100
+T:100. Grand Finale (2nds CCW) — arpeggio LH + shimmer RH
+T:Climactic showpiece — fast ascending LH + high-register sixteenth shimmer
+C:Full 7-mode cycle
+M:4/4
+L:1/16
+Q:1/4=104
+%%score {V1 V2}
+V:V1 clef=treble
+V:V2 clef=bass
+K:C
+[V:V1] "C" cegc' cegc' cegc' cegc' | "B°" bd'f'b' bd'f'b' bd'f'b' bd'f'b' | "Am" ac'e'a' ac'e'a' ac'e'a' ac'e'a' | "G" gbd'g' gbd'g' gbd'g' gbd'g' | "F" fac'f' fac'f' fac'f' fac'f' | "Em" egbe' egbe' egbe' egbe' | "Dm" dfad' dfad' dfad' dfad' | "C" cegc' cegc' cegc' cegc' |]
+[V:V2] "_8"C,2 E,2 G,2 C2 C,2 E,2 G,2 C2 | "_8"B,2 D2 F2 B2 B,2 D2 F2 B2 | "_8"A,2 C2 E2 A2 A,2 C2 E2 A2 | "_8"G,2 B,2 D2 G2 G,2 B,2 D2 G2 | "_8"F,2 A,2 C2 F2 F,2 A,2 C2 F2 | "_8"E,2 G,2 B,2 E2 E,2 G,2 B,2 E2 | "_8"D,2 F,2 A,2 D2 D,2 F,2 A,2 D2 | "_8"C,2 E,2 G,2 C2 C,2 E,2 G,2 C2 |]
