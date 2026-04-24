@@ -6,6 +6,25 @@ previous Claude left off. Each session appends a dated entry at the top.
 
 ---
 
+## 2026-04-23 (latest) — L7 final-cadence + sustained-melody counter-motion
+
+Two more L7 moves landed:
+
+- **Final-cadence RH octave doubling** — the hymn's last bar gets each
+  melody note doubled an octave up (`_pitch_doubled`). That pushes the
+  climax into octaves 5–6 and uses the upper strings idiomatically.
+- **Counter-motion under sustained soprano** — `is_sustained_melody(bar)`
+  returns True when the bar is dominated by a single held note (≥ 50 % of
+  bar duration). On those bars, middle-role LH switches from
+  two-half-bar-blocks to a running 1-3-5-3 arpeggio (`melody_sustained`
+  flag in `lh_pattern`). Only triggers on middle bars with ≥ 4 beat groups,
+  so short bars aren't affected.
+
+Deferred from L7: glissandos between phrases (would need rest-detection at
+phrase boundaries and a run of diatonic notes — more work than the
+remaining L7 items), and bisbigliando on held tonic pedals (rare in the
+corpus, so low-impact).
+
 ## 2026-04-23 (late) — L6 contour matching + L7 rolled chords
 
 Advanced the emitter from L5 to **L6 + partial L7** (per the ladder in

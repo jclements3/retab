@@ -205,8 +205,20 @@ def chord_label(chord: dict | None) -> str:
     return f"$1{num}$0"
 
 
-def render_melody_bar(bar: dict, mult: int) -> str:
-    """Emit melody bar; prepend chord annotation (if any) to the first event."""
+def _pitch_doubled(pitch: dict) -> str:
+    """Return a two-note ABC chord: the pitch plus its octave doubling."""
+    lo = pitch_to_abc(pitch)
+    hi = pitch_to_abc({**pitch, "octave": pitch["octave"] + 1})
+    return f"[{lo}{hi}]"
+
+
+def render_melody_bar(bar: dict, mult: int, octave_double: bool = False) -> str:
+    """Emit melody bar; prepend chord annotation (if any) to the first event.
+
+    When `octave_double` is True (the hymn's final cadence bar), each melody
+    note is struck as a two-note chord with an octave above — RH climax into
+    the harp's upper register (octaves 5–6).
+    """
     toks = []
     label = chord_label(bar.get("chord"))
     annotation = f'"^{label}"' if label else ""
@@ -216,7 +228,9 @@ def render_melody_bar(bar: dict, mult: int) -> str:
         if ev["kind"] == "rest":
             tok = _safe_note_dur("z", n)
         else:
-            tok = _safe_note_dur(pitch_to_abc(ev["pitch"]), n)
+            note_tok = _pitch_doubled(ev["pitch"]) if octave_double \
+                       else pitch_to_abc(ev["pitch"])
+            tok = _safe_note_dur(note_tok, n)
         if first and annotation and tok:
             tok = annotation + tok
             first = False
@@ -224,6 +238,25 @@ def render_melody_bar(bar: dict, mult: int) -> str:
             first = False
         toks.append(tok)
     return " ".join(t for t in toks if t)
+
+
+def is_sustained_melody(bar: dict) -> bool:
+    """True if this bar is dominated by a single long note (≥ 50% of bar).
+
+    Signals an L7 opportunity: the LH can move more actively (arpeggio) while
+    the melody rests.
+    """
+    events = bar.get("melody") or []
+    if not events:
+        return False
+    total = sum(ev["duration"] for ev in events)
+    if total <= 0:
+        return False
+    longest = max(
+        (ev["duration"] for ev in events if ev.get("kind") == "note"),
+        default=0,
+    )
+    return longest / total >= 0.5
 
 
 def bar_length_sixteenths(bar: dict, mult: int) -> int:
@@ -285,8 +318,14 @@ def cycle_type(from_deg: int | None, to_deg: int | None) -> tuple[int, str | Non
 
 def lh_pattern(degree: int, key_root: str, phrase_role: str,
                total_sixteenths: int, beats: int, unit: int,
-               next_degree: int | None = None) -> str:
-    """Emit bass-clef trefoil pattern filling exactly `total_sixteenths`."""
+               next_degree: int | None = None,
+               melody_sustained: bool = False) -> str:
+    """Emit bass-clef trefoil pattern filling exactly `total_sixteenths`.
+
+    When `melody_sustained` is True AND the bar is middle-role, the LH plays
+    a running 1-3-5-3 arpeggio instead of block chords — motion under the
+    held soprano, the L7 counter-texture.
+    """
     if total_sixteenths <= 0:
         return ""
 
@@ -328,12 +367,18 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
             _safe_chord(f, tail_dur)
         )
 
-    # Middle phrase (L4 + L6): two half-bar blocks by default, but when a
-    # chord change is coming up AND we have enough space (num_groups ≥ 4),
-    # the second half becomes an arpeggiated anticipation in the direction
-    # of the approaching chord.
+    # Middle phrase (L4 + L6 + L7).
     if phrase_role == "middle" and num_groups >= 2 and num_groups % 2 == 0:
         half = (num_groups // 2) * beat_16
+
+        # L7: melody-sustained override — the LH runs 1-3-5-3 arpeggio so
+        # there's motion under the held soprano. Requires ≥4 beat groups.
+        if melody_sustained and num_groups >= 4:
+            arp = [r, t, f, t]
+            # pad or truncate to num_groups cells of beat_16 each
+            cells = [arp[i % 4] for i in range(num_groups)]
+            return " ".join(_safe_chord(c, beat_16) for c in cells)
+
         ic, direction = cycle_type(degree, next_degree)
         if ic == 0 or num_groups < 4:
             return _safe_chord(block, half) + " " + _safe_chord(block, half)
@@ -399,8 +444,15 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     roles = assign_phrase_roles(len(bars), phrases)
     mult = detect_duration_multiplier(hymn)
 
-    # Melody V1: octave-sensitive, use as-is.
-    melody_bars = [render_melody_bar(b, mult) for b in bars]
+    # L7: the final bar of the hymn is the climax — RH melody doubled an
+    # octave up into the 5–6 range.
+    final_bar_idx = len(bars) - 1
+
+    # Melody V1: octave-sensitive, use as-is except for final-cadence doubling.
+    melody_bars = [
+        render_melody_bar(b, mult, octave_double=(i == final_bar_idx))
+        for i, b in enumerate(bars)
+    ]
 
     # Pre-compute each bar's scale-degree so we can look ahead to the next
     # chord (enables L6 contour matching).
@@ -417,9 +469,12 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     for i, bar in enumerate(bars):
         bar_16ths = bar_length_sixteenths(bar, mult)
         next_deg = degrees[i + 1] if i + 1 < len(degrees) else None
-        lh_bars.append(lh_pattern(degrees[i], effective_key, roles[i],
-                                   bar_16ths, meter_beats, meter_unit,
-                                   next_degree=next_deg))
+        lh_bars.append(lh_pattern(
+            degrees[i], effective_key, roles[i],
+            bar_16ths, meter_beats, meter_unit,
+            next_degree=next_deg,
+            melody_sustained=is_sustained_melody(bar),
+        ))
 
     # Content-aware line packing: estimate each bar's rendered width from its
     # token count, accumulate bars into a line until a width budget is hit.
