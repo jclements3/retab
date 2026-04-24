@@ -6,6 +6,18 @@ previous Claude left off. Each session appends a dated entry at the top.
 
 ---
 
+## 2026-04-23 (renamed) — Jazz Hymns tile rename
+
+Home-screen tile `Hymns` → `Jazz Hymns` in
+`HarpHymnal/tablet_app/app/src/main/assets/index.html` (lives in the
+HarpHymnal workspace, NOT in this repo). The pre-existing SATB/jazz-
+reharmed hymnal was ambiguously named alongside the new Retab Hymnal —
+now the four home tiles read: **Retab** (drills) · **Retab Hymnal**
+(harp-idiom retab of 279 hymns) · **Reharm** (jazz reharmonisation
+drills) · **Jazz Hymns** (the older SATB-based hymnal).
+
+No change to underlying hymn data or retab pipeline — pure label fix.
+
 ## 2026-04-23 (post-final) — harp-idiom rewrite of LH rhythm
 
 Critical feedback from the harpist: the LH patterns were piano-influenced
