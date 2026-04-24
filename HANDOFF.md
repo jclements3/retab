@@ -6,6 +6,49 @@ previous Claude left off. Each session appends a dated entry at the top.
 
 ---
 
+## 2026-04-23 (late) — L6 contour matching + L7 rolled chords
+
+Advanced the emitter from L5 to **L6 + partial L7** (per the ladder in
+`RETAB.md`).
+
+### L6 additions (`lh_pattern`)
+
+- New `cycle_type(from_deg, to_deg)` classifies the diatonic interval
+  between consecutive chord roots as (interval_class, direction) where
+  class ∈ {0: same, 1: 2nd, 2: 3rd, 3: 4th} and direction ∈ {up, down}.
+- **Cadence-approach arpeggio direction** — was always ascending 1-3-5.
+  Now descending 5-3-1 when the cadence chord is a falling-4th away
+  (plagal IV→I, I→V, etc.). Ascending stays the default (covers V→I, ii→V
+  and same-chord cadences).
+- **Middle-bar anticipation** — middle bars used to be two identical
+  half-bar blocks. Now, when `next_chord != current_chord` AND
+  `num_groups ≥ 4`, the second half walks toward the next chord's root
+  via a directional arpeggio. Short bars (≤2 beat groups) and
+  same-chord middles fall back to two blocks.
+- `build_abc` now pre-computes all bar degrees in a list so `lh_pattern`
+  receives a `next_degree` lookahead argument.
+
+### L7 partial — rolled chords on structural strikes
+
+The low-bass ditto block (opening + cadence bar, beat 1) is now decorated
+with `!arpeggio!` in the emitted ABC, which renders as the wavy-line roll
+mark in abcm2ps. On harp that's a sweeping strum from root up — the
+signature arrival sound. Single-line change: the `ditto_block` definition
+prepends `!arpeggio!`.
+
+### Still to come at L7
+
+- Glissandos between phrases (over the diatonic collection, filling rests)
+- Counter-melody in LH top voice when soprano sustains a long note
+  (borrow the alto/tenor line)
+- RH octave doubling on the final cadence melody note (climax)
+- Bisbigliando on held tonic pedals
+
+All 279 hymns still compile. SVGs regenerated into tablet assets; APK
+rebuilt and installed.
+
+---
+
 ## 2026-04-23 — Retab Hymnal shipped
 
 Built and installed the **Retab Hymnal**: all 279 hymns from OpenHymnal

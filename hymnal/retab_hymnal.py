@@ -260,8 +260,32 @@ def beat_group_sixteenths(beats: int, unit: int) -> int:
     return max(1, 16 // unit)  # simple: one denominator note
 
 
+# -----------------------------------------------------------------------------
+# L6 — trefoil-path contour matching.
+#
+# Classify motion between two chord-roots (diatonic scale degrees 0..6) as
+# (interval_class, direction) where interval_class is:
+#   0  same chord
+#   1  motion by a 2nd (stepwise)
+#   2  motion by a 3rd (common-tone pivot territory)
+#   3  motion by a 4th (the most common — V→I, ii→V, IV→I)
+# …and direction is 'up' or 'down' from the current chord to the target.
+
+def cycle_type(from_deg: int | None, to_deg: int | None) -> tuple[int, str | None]:
+    if from_deg is None or to_deg is None:
+        return (0, None)
+    up = (to_deg - from_deg) % 7
+    down = (from_deg - to_deg) % 7
+    if up == 0:
+        return (0, None)
+    if up <= down:
+        return (up if up <= 3 else 7 - up, "up")
+    return (down if down <= 3 else 7 - down, "down")
+
+
 def lh_pattern(degree: int, key_root: str, phrase_role: str,
-               total_sixteenths: int, beats: int, unit: int) -> str:
+               total_sixteenths: int, beats: int, unit: int,
+               next_degree: int | None = None) -> str:
     """Emit bass-clef trefoil pattern filling exactly `total_sixteenths`."""
     if total_sixteenths <= 0:
         return ""
@@ -271,34 +295,56 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
     f = scale_degree_to_abc(degree + 4, key_root, LH_TRIAD_OCTAVE)
     block = f"[{r}{t}{f}]"
 
-    # Low-bass ditto on opening + cadence: the root struck once at beat 1
-    # an octave below the triad. Single strike — never a rhythm — so
-    # octave-1 strings (C1–B1) read as a structural pedal anchor.
+    # L5 + L7: low-bass ditto on opening + cadence, struck once at beat 1 an
+    # octave below the triad, AND rolled (idiomatic harp wash on arrivals)
+    # via abcm2ps `!arpeggio!` decoration on the chord.
     ditto_block = None
     if phrase_role in ("opening", "cadence"):
         ditto = scale_degree_to_abc(degree, key_root, LH_DITTO_OCTAVE)
-        ditto_block = f"[{ditto}{r}{t}{f}]"
+        ditto_block = f"!arpeggio![{ditto}{r}{t}{f}]"
 
     beat_16 = beat_group_sixteenths(beats, unit)
     if beat_16 > 0 and total_sixteenths % beat_16 == 0:
         num_groups = total_sixteenths // beat_16
     else:
-        num_groups = 0  # fallback: treat bar as one chunk
+        num_groups = 0
 
-    # Cadence approach: 1-3-5 arpeggio filling the bar (needs ≥3 beat groups).
+    # Cadence approach (L4 + L6): arpeggio direction matches the motion to
+    # the cadence chord. Ascending = rising-4th cadences (V→I, ii→V);
+    # descending = falling-4th / plagal cadences (IV→I, I→V).
     if phrase_role == "cadence_approach" and num_groups >= 3:
-        # r on beat 1, t on beat 2, f sustained for the rest.
-        f_dur = (num_groups - 2) * beat_16
+        tail_dur = (num_groups - 2) * beat_16
+        _, direction = cycle_type(degree, next_degree)
+        if direction == "down":
+            return (
+                _safe_chord(f, beat_16) + " " +
+                _safe_chord(t, beat_16) + " " +
+                _safe_chord(r, tail_dur)
+            )
+        # ascending default (covers 'up' and same-chord cadences)
         return (
             _safe_chord(r, beat_16) + " " +
             _safe_chord(t, beat_16) + " " +
-            _safe_chord(f, f_dur)
+            _safe_chord(f, tail_dur)
         )
 
-    # Middle phrase: two equal half-bar blocks when bar splits cleanly in half.
+    # Middle phrase (L4 + L6): two half-bar blocks by default, but when a
+    # chord change is coming up AND we have enough space (num_groups ≥ 4),
+    # the second half becomes an arpeggiated anticipation in the direction
+    # of the approaching chord.
     if phrase_role == "middle" and num_groups >= 2 and num_groups % 2 == 0:
         half = (num_groups // 2) * beat_16
-        return _safe_chord(block, half) + " " + _safe_chord(block, half)
+        ic, direction = cycle_type(degree, next_degree)
+        if ic == 0 or num_groups < 4:
+            return _safe_chord(block, half) + " " + _safe_chord(block, half)
+        # second half: two notes summing to `half`, walking toward next chord
+        a_dur = beat_16
+        b_dur = half - beat_16
+        if direction == "down":
+            anticip = _safe_chord(f, a_dur) + " " + _safe_chord(t, b_dur)
+        else:
+            anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
+        return _safe_chord(block, half) + " " + anticip
 
     # Default: one block per beat group. On opening/cadence, the first strike
     # carries the low-bass ditto; subsequent strikes are plain triads.
@@ -307,7 +353,7 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
         rest = [_safe_chord(block, beat_16) for _ in range(num_groups - 1)]
         return " ".join([first] + rest)
 
-    # Fallback: irregular bar (pickup, etc.) — emit as tied block.
+    # Fallback: irregular bar (pickup) — emit as tied block.
     return _safe_chord(ditto_block or block, total_sixteenths)
 
 
@@ -356,17 +402,24 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     # Melody V1: octave-sensitive, use as-is.
     melody_bars = [render_melody_bar(b, mult) for b in bars]
 
-    # LH V2: trefoil pattern per bar, sized to the melody's actual bar length.
-    lh_bars = []
-    for i, bar in enumerate(bars):
+    # Pre-compute each bar's scale-degree so we can look ahead to the next
+    # chord (enables L6 contour matching).
+    degrees = []
+    for bar in bars:
         chord = bar["chord"] or {}
         num = chord.get("numeral") or "I"
         if mode == "minor":
             num = AEOLIAN_TO_IONIAN.get(num, num)
-        degree = parse_roman(num)
+        degrees.append(parse_roman(num))
+
+    # LH V2: trefoil pattern per bar, sized to the melody's actual bar length.
+    lh_bars = []
+    for i, bar in enumerate(bars):
         bar_16ths = bar_length_sixteenths(bar, mult)
-        lh_bars.append(lh_pattern(degree, effective_key, roles[i], bar_16ths,
-                                   meter_beats, meter_unit))
+        next_deg = degrees[i + 1] if i + 1 < len(degrees) else None
+        lh_bars.append(lh_pattern(degrees[i], effective_key, roles[i],
+                                   bar_16ths, meter_beats, meter_unit,
+                                   next_degree=next_deg))
 
     # Content-aware line packing: estimate each bar's rendered width from its
     # token count, accumulate bars into a line until a width budget is hit.

@@ -90,15 +90,22 @@ composition whose skeleton happens to be a hymn.
 
 ## Status of the Retab Hymnal
 
-The `hymnal/retab_hymnal.py` emitter currently lands at **L3–L5** for all
-279 hymns in the OpenHymnal corpus:
+The `hymnal/retab_hymnal.py` emitter currently lands at **L6 (partial L7)**
+for all 279 hymns in the OpenHymnal corpus:
 
 - L3: block-135 trefoil always applied ✅
 - L4: phrase-role articulation (opening/middle/cadence_approach/cadence) ✅
 - L5: octave-1 low-bass ditto on opening + cadence bars ✅
-- L6: not yet implemented — trefoil path metadata exists in
-  `HarpHymnal/data/trefoil/HarpTrefoil.json` and could drive voicing choice
-  per chord transition
-- L7: not yet implemented — would require graphical marks (rolls,
-  glissandos, bisbigliando) that abcm2ps supports but the emitter doesn't
-  currently use
+- L6: contour matching ✅
+  - Cadence-approach arpeggio direction matches motion to the cadence chord
+    (ascending for rising-4th cadences V→I / ii→V; descending for
+    falling-4th / plagal IV→I)
+  - Middle-bar anticipation: when the next bar's chord differs AND there
+    are ≥4 beat groups, the second half-bar walks toward the new chord's
+    root via a directional arpeggio instead of repeating the block
+- L7 (partial): rolled chords ✅
+  - `!arpeggio!` decoration on the low-bass opening + cadence strikes, so
+    C1–B1 arrivals read as a harp wash instead of a piano attack
+  - Still to come: glissandos between phrases, counter-melody in LH top
+    voice under sustained soprano, octave doubling on final cadence,
+    bisbigliando on held tonic pedals
