@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Retab Hymnal — apply trefoil LH patterns + RH melody to HarpHymnal hymns.
+"""Retab Hymnal -- apply trefoil LH patterns + RH melody to HarpHymnal hymns.
 
 Reads HarpHymnal's per-bar JSON (data/hymns/<slug>.json) and emits a grand-staff
 ABC file. V1 = melody (as given). V2 = diatonic block-135 trefoil pattern,
@@ -10,10 +10,22 @@ rhythm chosen by phrase_role (same guide used by reharm/tactics.json):
     cadence_approach arpeggio 1-3-5 quarters    (lift into cadence)
     cadence          whole-note block 135 root  (resolve)
 
+The emitter is level-parameterised (RETAB.md, seven levels):
+
+    L1  SATB close-score keyboard reduction (block chords, four per beat)
+    L2  lead-sheet (melody + root, two attacks/bar)
+    L3  trefoil block-135 triads (no piano stomp)
+    L4  L3 + phrase-role articulation
+    L5  L4 + structural low-bass anchors (C1-B1)
+    L6  L5 + trefoil-path contour matching
+    L7  L6 + full harp texture (rolled chords, octave melody,
+        counter-melody, bisbigliando)
+
 Compile with:  abcm2ps <out.abc> -O <name> -g    (per-tune SVG)
 """
 
 from __future__ import annotations
+import copy
 import json
 import re
 import sys
@@ -332,12 +344,21 @@ def cycle_type(from_deg: int | None, to_deg: int | None) -> tuple[int, str | Non
 def lh_pattern(degree: int, key_root: str, phrase_role: str,
                total_sixteenths: int, beats: int, unit: int,
                next_degree: int | None = None,
-               melody_sustained: bool = False) -> str:
+               melody_sustained: bool = False,
+               level: int = 7) -> str:
     """Emit bass-clef trefoil pattern filling exactly `total_sixteenths`.
 
-    When `melody_sustained` is True AND the bar is middle-role, the LH plays
-    a running 1-3-5-3 arpeggio instead of block chords — motion under the
-    held soprano, the L7 counter-texture.
+    The `level` parameter gates features top-down:
+      - L3: block-135 triad, "no piano stomp" walking; role ignored.
+      - L4: phrase-role articulation (opening/middle/cadence_approach/cadence).
+      - L5: + low-bass octave ditto on opening + cadence (bare block).
+      - L6: + trefoil-path contour matching (direction-aware arpeggios,
+        3rd-motion common-tone pivot).
+      - L7: + rolled (!arpeggio!) ditto, counter-melody under sustained
+        soprano.
+
+    L1 and L2 bypass this function entirely (see `lh_satb_block` and
+    `lh_leadsheet`).
     """
     if total_sixteenths <= 0:
         return ""
@@ -347,13 +368,14 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
     f = scale_degree_to_abc(degree + 4, key_root, LH_TRIAD_OCTAVE)
     block = f"[{r}{t}{f}]"
 
-    # L5 + L7: low-bass ditto on opening + cadence, struck once at beat 1 an
-    # octave below the triad, AND rolled (idiomatic harp wash on arrivals)
-    # via abcm2ps `!arpeggio!` decoration on the chord.
+    # L5: low-bass ditto on opening + cadence, struck once at beat 1 an
+    # octave below the triad. L7: that same ditto is rolled (!arpeggio!)
+    # for the idiomatic harp wash on arrivals; at L5-L6 it's a bare block.
     ditto_block = None
-    if phrase_role in ("opening", "cadence"):
+    if level >= 5 and phrase_role in ("opening", "cadence"):
         ditto = scale_degree_to_abc(degree, key_root, LH_DITTO_OCTAVE)
-        ditto_block = f"!arpeggio![{ditto}{r}{t}{f}]"
+        roll = "!arpeggio!" if level >= 7 else ""
+        ditto_block = f"{roll}[{ditto}{r}{t}{f}]"
 
     beat_16 = beat_group_sixteenths(beats, unit)
     if beat_16 > 0 and total_sixteenths % beat_16 == 0:
@@ -361,10 +383,20 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
     else:
         num_groups = 0
 
+    # L3 baseline: ignore phrase role entirely. Every bar gets the same
+    # "no piano stomp" walk recipe -- single strike if the bar is one
+    # beat group, otherwise a walking arpeggio through chord tones.
+    if level < 4:
+        if num_groups >= 2:
+            cycle = [r, t, f, t]
+            cells = [cycle[i % 4] for i in range(num_groups)]
+            return " ".join(_safe_chord(c, beat_16) for c in cells)
+        return _safe_chord(block, total_sixteenths)
+
     # -------------------------------------------------------------------
     # Harp idiom rule: never re-strike the same triad on consecutive beats.
     # Either (a) strike once and let ring, or (b) walk through different
-    # chord tones so each beat hits a fresh string — by the end of the bar
+    # chord tones so each beat hits a fresh string -- by the end of the bar
     # all three strings are ringing together anyway.
     # -------------------------------------------------------------------
 
@@ -373,11 +405,13 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
     if phrase_role in ("opening", "cadence"):
         return _safe_chord(ditto_block or block, total_sixteenths)
 
-    # CADENCE APPROACH (L4 + L6): 1-3-5 arpeggio, direction matched to
-    # motion toward the cadence chord.
+    # L6+: contour-matched cadence approach (direction keyed on motion to
+    # cadence chord). L4-L5 fall through to the default ascending 1-3-5.
     if phrase_role == "cadence_approach" and num_groups >= 3:
         tail_dur = (num_groups - 2) * beat_16
-        _, direction = cycle_type(degree, next_degree)
+        direction = None
+        if level >= 6:
+            _, direction = cycle_type(degree, next_degree)
         if direction == "down":
             return (
                 _safe_chord(f, beat_16) + " " +
@@ -390,18 +424,20 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
             _safe_chord(f, tail_dur)
         )
 
-    # MIDDLE — all cases walk through chord tones instead of stomping.
+    # MIDDLE -- all cases walk through chord tones instead of stomping.
     if phrase_role == "middle" and num_groups >= 2:
-        ic, direction = cycle_type(degree, next_degree)
+        ic, direction = (0, None)
+        if level >= 6:
+            ic, direction = cycle_type(degree, next_degree)
 
-        # L7: sustained melody → running 1-3-5-3 arpeggio (motion under a
+        # L7: sustained melody -> running 1-3-5-3 arpeggio (motion under a
         # held soprano).
-        if melody_sustained and num_groups >= 4:
+        if level >= 7 and melody_sustained and num_groups >= 4:
             arp = [r, t, f, t]
             cells = [arp[i % 4] for i in range(num_groups)]
             return " ".join(_safe_chord(c, beat_16) for c in cells)
 
-        # Static chord (no motion) — walking arpeggio across the bar.
+        # Static chord (no motion) -- walking arpeggio across the bar.
         # Pattern depends on bar length:
         #   2 groups: R T     (each note rings the other half, both sound)
         #   3 groups: R T F   (triad walk)
@@ -415,8 +451,8 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
             cells = [cycle[i % 4] for i in range(num_groups)]
             return " ".join(_safe_chord(c, beat_16) for c in cells)
 
-        # Chord change coming — strike block on beat 1 (let ring half bar)
-        # then anticipate the next chord with a directional arpeggio.
+        # L6+: chord change coming -- strike block on beat 1 (let ring half
+        # bar) then anticipate the next chord with a directional arpeggio.
         if num_groups >= 4 and num_groups % 2 == 0:
             half = (num_groups // 2) * beat_16
             a_dur = beat_16
@@ -433,7 +469,7 @@ def lh_pattern(degree: int, key_root: str, phrase_role: str,
                     anticip = _safe_chord(t, a_dur) + " " + _safe_chord(f, b_dur)
             return _safe_chord(block, half) + " " + anticip
 
-        # Short bar with a chord change — walking arpeggio, ending on the
+        # Short bar with a chord change -- walking arpeggio, ending on the
         # note closest to the next chord's root.
         if num_groups == 2:
             second = f if direction == "up" else r
@@ -463,9 +499,141 @@ def assign_phrase_roles(n_bars: int, phrases: list) -> list:
 
 
 # -----------------------------------------------------------------------------
+# Level passes -- each returns a copy of the hymn tagged with `_level`, which
+# `build_abc` reads to feature-gate the renderer. Retab's level ladder is
+# about *texture* (vs. reharm's *harmony*), so the passes mostly flip feature
+# switches rather than rewriting the hymn dict itself -- the heavy lifting is
+# inside `lh_pattern`, `render_melody_bar`, and `build_abc`, gated by the
+# level. The one exception is L1, which bypasses the trefoil pipeline entirely
+# in favour of an SATB-style block-chord reduction.
+
+def _tag_level(hymn: dict, level: int) -> dict:
+    out = copy.deepcopy(hymn)
+    out["_retab_level"] = level
+    return out
+
+
+def apply_level_1(hymn: dict) -> dict:
+    """L1 -- SATB close-score keyboard reduction.
+
+    Soprano on V1 (melody as given). V2 plays a synthesised alto+tenor+bass
+    block chord on every melody attack -- four attacks per beat when the
+    melody subdivides, so the texture is dense and piano-ish. No trefoil,
+    no phrase-role articulation, no walking. Deliberately "mud" on harp,
+    which is the point: L1 motivates the climb up the ladder.
+    """
+    return _tag_level(hymn, 1)
+
+
+def apply_level_2(hymn: dict) -> dict:
+    """L2 -- lead-sheet reduction. Melody on V1; LH plays the chord's root
+    twice per bar at half the melody's attack rate. No triads, no trefoil.
+    """
+    return _tag_level(hymn, 2)
+
+
+def apply_level_3(hymn: dict) -> dict:
+    """L3 -- trefoil block-135 triads (the canonical "this is Retab" level).
+
+    LH emits the diatonic root+3rd+5th triad once per chord. No-piano-stomp
+    rule: never re-strike the same triad on consecutive beats -- walk
+    through chord tones when the bar has multiple beat-groups. No phrase-
+    role articulation yet; every bar uses the same walking recipe.
+    """
+    return _tag_level(hymn, 3)
+
+
+def apply_level_4(hymn: dict) -> dict:
+    """L4 -- L3 + phrase-role articulation. Rhythm varies by opening /
+    middle / cadence_approach / cadence. Still static block triads -- no
+    low-bass anchors, no contour matching.
+    """
+    return _tag_level(hymn, 4)
+
+
+def apply_level_5(hymn: dict) -> dict:
+    """L5 -- L4 + structural low-bass anchors. On opening/cadence bars,
+    add the root an octave below the triad (C1-B1 range), struck once and
+    let ring. Still block-only (not rolled) at this level.
+    """
+    return _tag_level(hymn, 5)
+
+
+def apply_level_6(hymn: dict) -> dict:
+    """L6 -- L5 + trefoil-path contour matching. Voicing responds to the
+    direction of harmonic motion between chords (4ths up/down, 3rd pivot,
+    2nds stepwise). Low-bass anchors are still bare blocks (no roll).
+    """
+    return _tag_level(hymn, 6)
+
+
+def apply_level_7(hymn: dict) -> dict:
+    """L7 -- everything on. L6 + rolled chords on anchors, final-cadence
+    octave doubling in the melody, counter-melody arpeggio under sustained
+    soprano, bisbigliando on the final tonic hold.
+    """
+    return _tag_level(hymn, 7)
+
+
+RETAB_LEVELS = {
+    1: apply_level_1,
+    2: apply_level_2,
+    3: apply_level_3,
+    4: apply_level_4,
+    5: apply_level_5,
+    6: apply_level_6,
+    7: apply_level_7,
+}
+
+
+# -----------------------------------------------------------------------------
+# L1 SATB block-chord LH (bypasses the trefoil pipeline)
+
+def lh_satb_block(bar: dict, degree: int, key_root: str, mult: int) -> str:
+    """Emit a V2 bar that strikes a block A-T-B chord on every melody attack.
+
+    Alto sits a third above the tenor, tenor a third above the bass root.
+    Crude but deliberately so -- this is the "piano-ish" baseline RETAB.md
+    calls out.
+    """
+    root = scale_degree_to_abc(degree, key_root, LH_TRIAD_OCTAVE)
+    third = scale_degree_to_abc(degree + 2, key_root, LH_TRIAD_OCTAVE)
+    fifth = scale_degree_to_abc(degree + 4, key_root, LH_TRIAD_OCTAVE)
+    block = f"[{root}{third}{fifth}]"
+    toks = []
+    for ev in bar["melody"]:
+        n = int(round(ev["duration"] * mult))
+        if n <= 0:
+            continue
+        if ev["kind"] == "rest":
+            toks.append(_safe_note_dur("z", n))
+        else:
+            toks.append(_safe_chord(block, n))
+    return " ".join(t for t in toks if t)
+
+
+# -----------------------------------------------------------------------------
+# L2 lead-sheet LH (root-only, two attacks per bar)
+
+def lh_leadsheet(degree: int, key_root: str, total_sixteenths: int) -> str:
+    """Emit a V2 bar that strikes the chord's root twice at half-bar points."""
+    if total_sixteenths <= 0:
+        return ""
+    root = scale_degree_to_abc(degree, key_root, LH_TRIAD_OCTAVE)
+    half = total_sixteenths // 2
+    if half <= 0:
+        return _safe_note_dur(root, total_sixteenths)
+    rem = total_sixteenths - half
+    a = _safe_note_dur(root, half)
+    b = _safe_note_dur(root, rem) if rem > 0 else ""
+    return (a + (" " + b if b else "")).strip()
+
+
+# -----------------------------------------------------------------------------
 # Build ABC output
 
-def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
+def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None,
+              level: int | None = None) -> str:
     title = hymn["title"]
     if num_prefix:
         title = f"{num_prefix}. {title}"
@@ -476,8 +644,14 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     bars = hymn["bars"]
     phrases = hymn["phrases"]
 
+    # Resolution order for level: explicit arg wins, else hymn tag from a
+    # level pass, else default to L7 (preserves the historical full-texture
+    # output when called with a plain hymn dict).
+    if level is None:
+        level = hymn.get("_retab_level", 7)
+
     # For minor hymns, translate to relative major for the staff key signature
-    # and translate roman numerals Aeolian→Ionian-relative so triads come out
+    # and translate roman numerals Aeolian->Ionian-relative so triads come out
     # diatonic in the surface key.
     if mode == "minor":
         effective_key = relative_major(key_root, mode)
@@ -487,13 +661,15 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
     roles = assign_phrase_roles(len(bars), phrases)
     mult = detect_duration_multiplier(hymn)
 
-    # L7: the final bar of the hymn is the climax — RH melody doubled an
-    # octave up into the 5–6 range.
+    # L7: the final bar of the hymn is the climax -- RH melody doubled an
+    # octave up into the 5-6 range. Disabled below L7.
     final_bar_idx = len(bars) - 1
 
-    # Melody V1: octave-sensitive, use as-is except for final-cadence doubling.
     melody_bars = [
-        render_melody_bar(b, mult, octave_double=(i == final_bar_idx))
+        render_melody_bar(
+            b, mult,
+            octave_double=(level >= 7 and i == final_bar_idx),
+        )
         for i, b in enumerate(bars)
     ]
 
@@ -507,22 +683,31 @@ def build_abc(hymn: dict, x_num: int = 1, num_prefix: str | None = None) -> str:
             num = AEOLIAN_TO_IONIAN.get(num, num)
         degrees.append(parse_roman(num))
 
-    # LH V2: trefoil pattern per bar, sized to the melody's actual bar length.
+    # LH V2: emitter path depends on level.
+    #   L1 -- SATB block chord on every melody attack.
+    #   L2 -- chord-root lead sheet, two attacks per bar.
+    #   L3+ -- trefoil block-135, feature-gated inside lh_pattern.
     lh_bars = []
     for i, bar in enumerate(bars):
         bar_16ths = bar_length_sixteenths(bar, mult)
-        next_deg = degrees[i + 1] if i + 1 < len(degrees) else None
-        sustained = is_sustained_melody(bar)
-        pat = lh_pattern(
-            degrees[i], effective_key, roles[i],
-            bar_16ths, meter_beats, meter_unit,
-            next_degree=next_deg,
-            melody_sustained=sustained,
-        )
-        # L7 bisbigliando: only the hymn's FINAL cadence — and only when the
-        # final melody note is genuinely long (≥ 80% of the bar). A shimmer
-        # is a rare gesture; one per hymn is the ceiling.
-        if (i == final_bar_idx and degrees[i] == 0
+        if level == 1:
+            pat = lh_satb_block(bar, degrees[i], effective_key, mult)
+        elif level == 2:
+            pat = lh_leadsheet(degrees[i], effective_key, bar_16ths)
+        else:
+            next_deg = degrees[i + 1] if i + 1 < len(degrees) else None
+            sustained = is_sustained_melody(bar)
+            pat = lh_pattern(
+                degrees[i], effective_key, roles[i],
+                bar_16ths, meter_beats, meter_unit,
+                next_degree=next_deg,
+                melody_sustained=sustained,
+                level=level,
+            )
+        # L7 bisbigliando: only the hymn's FINAL cadence -- and only when
+        # the final melody note is genuinely long (>= 95% of the bar).
+        # A shimmer is a rare gesture; one per hymn is the ceiling.
+        if (level >= 7 and i == final_bar_idx and degrees[i] == 0
                 and _bar_has_long_hold(bar, 0.95)):
             pat = '"_bisb."' + pat
         lh_bars.append(pat)
@@ -589,10 +774,13 @@ def main():
     ap.add_argument("hymn_json", help="path to HarpHymnal data/hymns/<slug>.json")
     ap.add_argument("-o", "--output", help="output ABC path (default stdout)")
     ap.add_argument("-x", "--xnum", type=int, default=1)
+    ap.add_argument("--level", type=int, default=3, choices=range(1, 8),
+                    help="retab level 1-7 (default 3, the canonical trefoil)")
     args = ap.parse_args()
 
     hymn = json.loads(Path(args.hymn_json).read_text(encoding="utf-8"))
-    abc = build_abc(hymn, x_num=args.xnum)
+    retabbed = RETAB_LEVELS[args.level](hymn)
+    abc = build_abc(retabbed, x_num=args.xnum, level=args.level)
     if args.output:
         Path(args.output).write_text(abc, encoding="utf-8")
     else:
